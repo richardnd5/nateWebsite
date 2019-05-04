@@ -2,17 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import {Nav} from 'react-bootstrap'
 
-const Styles = styled.div`
-.navLink {
-    /* background-color: #111; */
-    color: #000;
-    font-family: 'Avenir';
-    float: right;
-
-}
-
-`
-
 export const CustomSideBar = (props) => {
   return(
     <div>
