@@ -7,10 +7,18 @@ import { Contact } from './components/Contact'
 import { NoMatch } from './components/NoMatch'
 import Transcribe from './components/Transcribe'
 import { UserContext } from './UserContext'
-import NavigationBar from './components/NavigationBar'
 import Sidebar from "react-sidebar"
 import { CustomSideBar } from './components/CustomSideBar'
+import styled from 'styled-components'
+import hamburgerImage from './assets/hamburgerIcon.svg'
 
+
+const SidebarButton = styled.img`
+  position: fixed;
+  padding-left: 16px;
+  padding-top: 14px;
+  z-index: 100;
+`
 
 class App extends Component {
 
@@ -55,9 +63,9 @@ class App extends Component {
       }
         open={this.state.sidebarOpen}
         onSetOpen={this.onSetSidebarOpen}
-        styles={{ sidebar: { background: "white", position: 'fixed' } }}
+        styles={{ sidebar: { background: "white", position: 'fixed', zIndex: '101' } }}
       >
-        <button onClick={() => this.onSetSidebarOpen(true)} style={{'position': 'fixed'}}/>
+          <SidebarButton onClick={() => this.onSetSidebarOpen(true)} src={hamburgerImage} alt="Menu"/>
       </Sidebar>
           <Router>
             <Switch>

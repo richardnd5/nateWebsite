@@ -1,5 +1,5 @@
-import React, {useContext} from 'react'
-import { UserContext } from '../UserContext'
+import React from 'react'
+// import { UserContext } from '../UserContext'
 import styled from 'styled-components'
 import Sticky from 'react-stickynode';
 
@@ -12,7 +12,7 @@ padding: 8px;
 `
 
 export const StickyText = (props) => {
-  const value = useContext(UserContext);
+  // const value = useContext(UserContext);
   const { name,text, whatToStickTo } = props;
   return(
     <Sticky enabled={true} top={`.${whatToStickTo}`} className={name} >

@@ -17,7 +17,7 @@ export default class Home extends Component {
     return (
       <Container>
       <Padding/>
-        <Sticky enabled={true} top={150} className='navbarSpace'/>
+        <Sticky enabled={true} top={150} className='navbarSpace' style={{'backgroundColor': '#eee', 'height': 100, 'width': 100}}/>
         <StickyText name='text1' text='Hello!' whatToStickTo='navbarSpace'/>
 
         <Padding/>
