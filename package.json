@@ -4,15 +4,21 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "d3": "^5.9.2",
     "eslint-plugin-react-hooks": "^1.6.0",
+    "flubber": "^0.4.2",
+    "popmotion": "^8.6.9",
+    "randomcolor": "^0.5.4",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
+    "react-pose": "^4.0.8",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "react-sidebar": "^3.0.2",
     "react-sticky": "^6.0.3",
     "react-stickynode": "^2.1.1",
+    "react-svg-morph": "^0.2.1",
     "styled-components": "^4.2.0"
   },
   "scripts": {
