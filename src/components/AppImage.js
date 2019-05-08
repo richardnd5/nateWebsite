@@ -10,36 +10,25 @@ font-weight: bold;
 display: flex;
 justify-content: center;
 align-items: center;
-width: '100%';
-height: 30vh;
+width: 30vw;
+height: 30vw;
+border-radius: 20px;
 
 background-image: ${props => `url(${props.image})`};
 background-color: ${props => props.color || "#ade"};
 background-blend-mode: multiply;
 background-repeat: no-repeat;
-background-position: 55% 40%; 
-padding: 0px;
 
-background-size: 195%;
+background-size: 100%;
 font-size: 1.5em;
 
 cursor: pointer;
-transition: 0.3s;
+transition: 0.5s;
 
 &:hover {
-    background-color: rgba(12, 12, 63, 0.5);
-    background-size: 205%;
-
+    background-size: 105%;
   }
 
-@media (min-width: 700px) {
-  height: 30vh;
-
-  &:hover {
-    background-color: rgba(12, 12, 63, 0.7);
-    background-size: 205%;
-  }
-}
 `
 
 const Styles = styled.div`
@@ -48,16 +37,15 @@ const Styles = styled.div`
 }
 `
 
-export const InfoCell = (props) => {
+export const AppImage = (props) => {
 
   const { text, color, image, link } = props;
   return (
 
 
-    <Col noGutters={true} xs={6} style={{ 'backgroundColor': '#333' }}>
+    <Col noGutters={true} xs={6}>
       <Styles>
-        <Nav.Item><Nav.Link style={{ 'color': '#eee', 'width': '100%', 'height': '100%', 'padding': 0 }} href={link}>
-
+        <Nav.Item><Nav.Link href={link}>
           <Container color={color} image={image}>
             {text}
           </Container>

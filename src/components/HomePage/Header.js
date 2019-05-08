@@ -9,6 +9,8 @@ flex-direction: column;
 justify-content: center;
 align-content: center;
 text-align: center;
+padding-bottom: 20px;
+padding-top: 20px;
 `
 
 const Title = styled.div`
@@ -28,6 +30,7 @@ color: #eee;
 font-family: 'Avenir';
 font-size: 0.9em;
 width: 100%;
+padding-top: 1vh;
 
 @media (min-width: 700px) {
   font-size: 1.2em;

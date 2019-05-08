@@ -12,8 +12,7 @@ export const Home = () => (
   <div>
     <Header/>
     <Container noGutters={true}>
-
-      <Row noGutters={true}>
+      <Row noGutters={true} style={{'paddingTop': 20}}>
           <InfoCell height={200} text='About' color='rgba(12, 12, 63, 1.0)' image={AboutImage} link='/about'/>
           <InfoCell height={200} text='Apps' color='rgba(46, 204, 113,1.0)' image={AppsImage} link='/apps'/>
       </Row>
