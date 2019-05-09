@@ -75,7 +75,11 @@ class App extends Component {
       }
         open={this.state.sidebarOpen}
         onSetOpen={this.onSetSidebarOpen}
-        styles={{ sidebar: { background: "#333", position: 'fixed', zIndex: '101' } }}
+        styles={{ sidebar: { 
+          background: "#d3cf4a", 
+          position: 'fixed', 
+          zIndex: '101',
+        } }}
       >   
       </Sidebar>
       <SidebarButton onClick={() => this.onSetSidebarOpen(true)} src={hamburgerImage} alt="Menu"/>
