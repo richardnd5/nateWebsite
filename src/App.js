@@ -14,11 +14,35 @@ const SidebarButton = styled.img`
   z-index: 100;
 `
 
+const SidebarContainer = styled.div`
+width: 100%;
+position: fixed;
+height: 60px;
+background-color: ${props => props.color || 'rgba(3, 3, 10, 1.0)'};
+
+display:flex;
+align-items: center;
+justify-content: flex-end;
+z-index: 1;
+padding-right: 20px;
+
+`
+
+const SidebarText = styled.div`
+
+color: #eee;
+font-family: 'Avenir';
+font-weight: bold;
+font-size: 1.0em;
+opacity: ${props => props.opacity || 0.0};
+`
+
 class App extends Component {
 
   state = {
     scrollPos: 0,
-    sidebarOpen: false
+    sidebarOpen: false,
+    page: "Arrangements"
   }
 
   componentDidMount() {
@@ -40,11 +64,18 @@ class App extends Component {
   }
 
   render() {
+
+    const { scrollPos } = this.state
     return (
       <Fragment>
         <UserContext.Provider value={this.state}>
 
             <SidebarButton onClick={() => this.onSetSidebarOpen(true)} src={hamburgerImage} alt="Menu"/>
+
+
+            <SidebarContainer color={`rgba(3, 3, 10, ${scrollPos/200})`}>
+              <SidebarText opacity={scrollPos/200}>N. Richard</SidebarText>
+            </SidebarContainer>
             <Sidebar
                 sidebar={ <CustomSideBar/>}
                 open={this.state.sidebarOpen}
@@ -52,11 +83,14 @@ class App extends Component {
                 styles={{ sidebar: { 
                   background: "#d3cf4a", 
                   position: 'fixed', 
-                  zIndex: '101',
+                  zIndex: '1000',
                 } }}>   
             </Sidebar>
 
             <Routes/>
+
+
+
 
         </UserContext.Provider>
       </Fragment>

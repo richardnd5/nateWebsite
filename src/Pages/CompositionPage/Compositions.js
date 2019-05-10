@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { VideoCell } from '../../components/VideoCell'
 import { Container, Row, Col } from 'react-bootstrap'
 import { compositionList } from './compositionList'
+import Sticky from 'react-stickynode';
+
 
 const Styles = styled.div`
 .textAlign{
@@ -13,11 +15,21 @@ const Styles = styled.div`
     padding-top: 50px;
 }
 `
+const Text = styled.div`
+color: #eee;
+font-family: 'Avenir';
+font-weight: bold;
 
-const Heading = styled.h1`
-    color: #ddd;
-    text-align: center;
-    padding-top: 80px;
+height: ${props => props.divHeight || 100};
+
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 2.2em;
+`
+
+const Padding = styled.div`
+padding-top: 100px;
 `
 
 const CompositionCells = ({arrangements}) => (
@@ -37,8 +49,11 @@ const CompositionCells = ({arrangements}) => (
 
 export const Compositions = () => (
     <Styles>
-        <Heading>Compositions</Heading>
-        <Container className='textAlign'>
+        <Container className='textAlign' style={{"zIndex": 4}}>
+        <Padding/>
+            <Sticky enabled={false} top={3}>
+                <Text divHeight={100}>Compositions</Text>
+            </Sticky>
             <Row className="paddingTop">
                 <CompositionCells arrangements={compositionList}/>
                 <Col/>

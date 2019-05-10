@@ -13,14 +13,6 @@ display: flex;
 justify-content: center;
 align-items: center;
 font-size: 1.2em;
-
-@media (min-width: 700px) {
-  /* font-size: 2.0em; */
-  }
-
-@media (min-width: 1100px) {
-  /* font-size: 3.0em; */
-}
 `
 
 export const StickyText = (props) => {

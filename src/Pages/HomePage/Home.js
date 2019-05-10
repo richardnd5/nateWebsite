@@ -6,6 +6,8 @@ import AboutImage from '../../assets/AboutImage.jpg'
 import AppsImage from '../../assets/AppsImage.png'
 import ArrangementsImage from '../../assets/ArrangementsImage.jpg'
 import CompositionsImage from '../../assets/CompositionsImage.jpg'
+import GitHubIcon from '../../assets/GitHub-Mark-64px.png'
+import {SocialMediaIcon} from '../../components/SocialMediaIcon'
 
 
 export const Home = () => (
@@ -21,6 +23,14 @@ export const Home = () => (
         <InfoCell height={200} text='Arrangements' color='rgba(241, 196, 15,1.0)' image={ArrangementsImage} link='/arrangements'/>
         <InfoCell height={200} text='Compositions' color='rgba(231, 76, 60,1.0)' image={CompositionsImage} link='/compositions'/>
       </Row>
+
+      <div style={{
+              display:'flex',
+              justifyContent: 'center',
+              alignContent: 'flex-bottom'
+            }}>
+            <SocialMediaIcon image={GitHubIcon} link='https://github.com/richardnd5'/>
+            </div>
 
     </Container>
   </div>

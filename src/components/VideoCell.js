@@ -19,6 +19,7 @@ const Container = styled.div`
     margin-top: 20px;
     margin-bottom: 20px;
 
+
     @media (min-width: 768px) {
         height: 400px;
     }
@@ -48,8 +49,9 @@ justify-content: center;
 `
 export const VideoCell = (props) => {
     const { title, subtitle, videoId, isVimeo, color } = props;
-return(
-    <Col xs={12} md={6} xl={4}>
+    return(
+
+        <Col xs={12} md={6} xl={4}>
         <>
                 <Container color ={color}>
                 <Title padding='10px'>
@@ -82,7 +84,5 @@ return(
 
         </>
     </Col>
-
-
 )
 }
