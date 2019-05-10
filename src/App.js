@@ -11,8 +11,8 @@ import { NoMatch } from './components/NoMatch'
 import Transcribe from './components/Transcribe'
 import Playground from './components/Playground'
 import {Apps} from './components/Apps'
-import {Arrangements} from './components/Arrangements'
-import {Compositions} from './components/Compositions'
+import {Arrangements} from './components/ArrangementPage/Arrangements'
+import {Compositions} from './components/CompositionPage/Compositions'
 
 
 import { UserContext } from './UserContext'
