@@ -42,8 +42,8 @@ const ArrangementCells = ({arrangements}) => (
                 videoId= {arrangement.videoId}
                 isVimeo= {arrangement.isView}
                 color= {arrangement.color}
+                key={i}
                 />
-  
       ))}
     </>
   ); 

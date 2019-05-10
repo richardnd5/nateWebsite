@@ -17,10 +17,10 @@ height: ${props => `${props.height}` || '100vh'};
 const ArrayOfWords = ({words}) => (
   <>
     { words.map((phrase,i) => (
-      <>
+      <div key={i}>
         <StickyText text={phrase} stickyTop={divHeight*i} divHeight={divHeight}/>
         <Padding height='100vh'/>
-      </>
+      </div>
     ))}
   </>
 ); 

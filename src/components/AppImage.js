@@ -36,7 +36,7 @@ transition: 0.5s;
 export const AppImage = (props) => {
   const { text, image, link } = props;
   return (
-      <Col className='AppContainer' noGutters={false}>
+      <Col className='AppContainer'>
           <Nav.Item><Nav.Link href={link}>
               <Container className='App' image={image}>
                 {text}

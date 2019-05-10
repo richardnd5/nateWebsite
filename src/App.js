@@ -42,7 +42,14 @@ class App extends Component {
   state = {
     scrollPos: 0,
     sidebarOpen: false,
-    page: "Arrangements"
+    page: "Arrangements",
+    scrollTop: 0
+  }
+
+  constructor(props){
+    super(props)
+    this.myRef = React.createRef()
+
   }
 
   componentDidMount() {
@@ -59,24 +66,23 @@ class App extends Component {
   
   listenToScroll = () => {
     this.setState({
-      scrollPos: document.documentElement.scrollTop,
+      scrollPos: window.pageYOffset,
     })
   }
 
   render() {
 
     const { scrollPos } = this.state
+
     return (
       <Fragment>
         <UserContext.Provider value={this.state}>
-
             <SidebarButton onClick={() => this.onSetSidebarOpen(true)} src={hamburgerImage} alt="Menu"/>
-
-
-            <SidebarContainer color={`rgba(3, 3, 10, ${scrollPos/200})`}>
+            <SidebarContainer color={`rgba(3, 3, 10, ${scrollPos/200})`} >
               <SidebarText opacity={scrollPos/200}>N. Richard</SidebarText>
             </SidebarContainer>
             <Sidebar
+                children='none'
                 sidebar={ <CustomSideBar/>}
                 open={this.state.sidebarOpen}
                 onSetOpen={this.onSetSidebarOpen}

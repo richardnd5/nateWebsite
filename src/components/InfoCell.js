@@ -54,7 +54,7 @@ export const InfoCell = (props) => {
   return (
 
 
-    <Col noGutters={true} xs={6} style={{ 'backgroundColor': '#333' }}>
+    <Col nogutters="true" xs={6} style={{ 'backgroundColor': '#333' }}>
       <Styles>
         <Nav.Item><Nav.Link style={{ 'color': '#eee', 'width': '100%', 'height': '100%', 'padding': 0 }} href={link}>
           <Container color={color} image={image}>

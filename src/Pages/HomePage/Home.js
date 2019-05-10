@@ -13,13 +13,13 @@ import {SocialMediaIcon} from '../../components/SocialMediaIcon'
 export const Home = () => (
   <div>
     <Header title='N. Richard' subtitle="Musician, Developer, Educator"/>
-    <Container noGutters={true}>
-      <Row noGutters={true} style={{'paddingTop': 20}}>
+    <Container>
+      <Row noGutters style={{'paddingTop': 20}}>
           <InfoCell height={200} text='About' color='rgba(12, 12, 63, 1.0)' image={AboutImage} link='/about'/>
           <InfoCell height={200} text='Apps' color='rgba(46, 204, 113,1.0)' image={AppsImage} link='/apps'/>
       </Row>
       
-      <Row noGutters={true}>
+      <Row noGutters>
         <InfoCell height={200} text='Arrangements' color='rgba(241, 196, 15,1.0)' image={ArrangementsImage} link='/arrangements'/>
         <InfoCell height={200} text='Compositions' color='rgba(231, 76, 60,1.0)' image={CompositionsImage} link='/compositions'/>
       </Row>
