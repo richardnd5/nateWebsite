@@ -6,16 +6,15 @@ const Styles = styled.div`
     text-align: center;
     color: #eee;
     font-family: 'Avenir';
+    padding-top: 120px;
 }
 `
 
-export const Contact = () => (
+export const NoMatch = () => (
   <Styles>
   <div className="center">
-    <h2>Questions?</h2>
-    <p>You can email me at:</p>
-    <p>nathan . d . richard at gmail dot com</p>
-
+    <h2>Oh No! This page doesn't exist!</h2>
+    <p>Click on the button!</p>
   </div>
   </Styles>
 )

@@ -1,19 +1,52 @@
-import React from "react";
+import React from 'react'
+import styled from 'styled-components'
 
-export default class Header extends React.Component {
-  static defaultProps = {
-    className: ""
-  };
-  render() {
-    const { style} = this.props;
-    return (
-      <div style={style}>
-        <h2>
-          <span>
-            Hey!
-          </span>
-        </h2>
-      </div>
-    );
+
+const Container = styled.div`
+display: flex;
+height: 20vh;
+flex-direction: column;
+justify-content: center;
+align-content: center;
+text-align: center;
+padding-bottom: 20px;
+padding-top: 20px;
+`
+
+const Title = styled.div`
+color: #eee;
+font-family: 'Avenir';
+font-weight: bold;
+font-size: 2.5em;
+width: 100%;
+
+@media (min-width: 700px) {
+  font-size: 3.0em;
+}
+
+`
+const SubTitle = styled.div`
+color: #eee;
+font-family: 'Avenir';
+font-size: 0.9em;
+width: 100%;
+padding-top: 1vh;
+
+@media (min-width: 700px) {
+  font-size: 1.2em;
   }
+
+@media (min-width: 1100px) {
+  font-size: 1.6em;
+}
+`
+
+export const Header = (props) => {
+  const {title, subtitle} = props
+  return(
+    <Container>
+      <Title>{title}</Title>
+      <SubTitle>{subtitle}</SubTitle>
+    </Container>
+  )
 }

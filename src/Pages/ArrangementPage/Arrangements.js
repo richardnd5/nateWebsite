@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { VideoCell } from '../VideoCell'
 import { Container, Row, Col } from 'react-bootstrap'
-import { compositionList } from './compositionList'
+import { VideoCell } from '../../components/VideoCell'
+import { arrangements } from './arrangementList'
 
 const Styles = styled.div`
 .textAlign{
@@ -20,7 +20,7 @@ const Heading = styled.h1`
     padding-top: 80px;
 `
 
-const CompositionCells = ({arrangements}) => (
+const ArrangementCells = ({arrangements}) => (
     <>
       { arrangements.map((arrangement,i) => (
                 <VideoCell 
@@ -35,12 +35,12 @@ const CompositionCells = ({arrangements}) => (
     </>
   ); 
 
-export const Compositions = () => (
+export const Arrangements = () => (
     <Styles>
-        <Heading>Compositions</Heading>
+        <Heading>Arrangements</Heading>
         <Container className='textAlign'>
             <Row className="paddingTop">
-                <CompositionCells arrangements={compositionList}/>
+                <ArrangementCells arrangements={arrangements}/>
                 <Col/>
                 <Col/>      
             </Row>

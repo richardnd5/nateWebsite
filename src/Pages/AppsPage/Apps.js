@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Row, Container } from 'react-bootstrap'
-import {AppImage} from './AppImage'
-import CSAImage from '../assets/CSA.jpg'
-import sStoriesImage from '../assets/sStoriesReduced.png'
+import {AppImage} from '../../components/AppImage'
+import CSAImage from '../../assets/CSA.jpg'
+import sStoriesImage from '../../assets/sStoriesReduced.png'
 
 const Heading = styled.h1`
 padding-top: 60px;

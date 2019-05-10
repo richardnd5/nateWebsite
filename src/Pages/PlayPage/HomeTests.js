@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import styled from 'styled-components'
 import Sticky from 'react-stickynode';
-import { UserContext } from '../UserContext'
-import downArrow from '../assets/downArrow.svg'
+import { UserContext } from '../../UserContext'
+import downArrow from '../../assets/downArrow.svg'
 import posed from 'react-pose';
 
 

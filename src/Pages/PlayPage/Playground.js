@@ -4,7 +4,7 @@ import Sticky from 'react-stickynode';
 import posed from 'react-pose';
 import { tween, easing } from 'popmotion';
 import { interpolate } from 'flubber';
-import { UserContext } from '../UserContext'
+import { UserContext } from '../../UserContext'
 import { pathIds, paths } from './paths.js'
 
 const Container = styled.div`

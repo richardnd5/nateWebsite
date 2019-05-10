@@ -22,6 +22,7 @@ export const CustomSideBar = (props) => {
         <Nav.Item><Nav.Link className='link' href="/apps">Apps</Nav.Link></Nav.Item>
         <Nav.Item><Nav.Link className='link' href="/arrangements">Arrangements</Nav.Link></Nav.Item>
         <Nav.Item><Nav.Link className='link' href="/compositions">Compositions</Nav.Link></Nav.Item>
+        <Nav.Item><Nav.Link className='link' href="/contact">Contact</Nav.Link></Nav.Item>
     </Container>
     </Styles>
   );

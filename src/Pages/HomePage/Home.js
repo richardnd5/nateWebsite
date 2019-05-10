@@ -1,6 +1,6 @@
 import React from 'react'
-import { Header } from './Header'
-import {InfoCell} from './InfoCell'
+import { Header } from '../../components/Header'
+import {InfoCell} from '../../components/InfoCell'
 import { Row, Container } from 'react-bootstrap'
 import AboutImage from '../../assets/AboutImage.jpg'
 import AppsImage from '../../assets/AppsImage.png'
@@ -10,7 +10,7 @@ import CompositionsImage from '../../assets/CompositionsImage.jpg'
 
 export const Home = () => (
   <div>
-    <Header/>
+    <Header title='N. Richard' subtitle="Musician, Developer, Educator"/>
     <Container noGutters={true}>
       <Row noGutters={true} style={{'paddingTop': 20}}>
           <InfoCell height={200} text='About' color='rgba(12, 12, 63, 1.0)' image={AboutImage} link='/about'/>

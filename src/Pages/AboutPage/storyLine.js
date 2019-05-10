@@ -1,12 +1,21 @@
 const storyLine = [
-    'Hello',
-    'This page is still under construction'
+    'Hello!',
+    'This page is still under construction',
+    "Thank you for visiting my website.",
+    "Who am I? I am Nathan.",
+    "A professional musician who", 
+    "learned he loved software development just a few years ago",
+    "I am passionate about creativity",
+    "I am building this website as a way to practice Javascript and React.",
+    "I hope you enjoy!"
 ]
 
 // const storyLine = [
-//     "Hello.",
+//     'Hello!',
+//     'This page is still under construction',
 //     "Thank you for visiting my website.",
-//     "Who am I? I am Nathan. A professional musician who learned he loved software development later in his life",
+//     "Who am I? I am Nathan.",
+//     "A professional musician who learned he loved software development later in his life",
 //     "I've spent the majority of my life learning, living, and paying the bills with music.",
 //     "I love it. Which is why I spent a lot of money and time for a couple degrees in it. (still spending...) ",
 //     "Music continues to give me many great things, but most of all, it gives me an opportunity to be creative.",
@@ -23,8 +32,6 @@ const storyLine = [
 //     "Some of my lifelong goals: to make music accessible to as many people as I can, and create opportunities for people to be creative.",
 //     "I'll post a few of the different things I have made over the years. Some of it will be music-related because I have had a successful decade-long career in it.",
 //     "I hope you enjoy!",
-
-
 // ]
 
 module.exports = storyLine

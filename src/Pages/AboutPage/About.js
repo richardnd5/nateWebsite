@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import styled from 'styled-components'
-import {StickyText} from './StickyText'
+import {StickyText} from '../../components/StickyText'
 import storyLine from './storyLine'
 
-const divHeight = 50
+const divHeight = 60
 
 const Container = styled.div`
 text-align: center;
@@ -21,23 +21,17 @@ const ArrayOfWords = ({words}) => (
         <StickyText text={phrase} stickyTop={divHeight*i} divHeight={divHeight}/>
         <Padding height='100vh'/>
       </>
-
     ))}
   </>
 ); 
-
-
 
 export default class About extends Component {
 
   render() {
     return (
       <Container>
-
         <Padding height='30vh'/>
         <ArrayOfWords words={storyLine} />
-
-
     </Container>    
     )
   }  

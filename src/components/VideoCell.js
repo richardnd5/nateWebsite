@@ -4,6 +4,15 @@ import YouTube from 'react-youtube'
 import {Col} from 'react-bootstrap'
 import ReactPlayer from 'react-player'
 
+/*
+Usage. Import by destructuring. Provide these props
+    title = string, 
+    subtitle = string, 
+    videoId = (Youtube Id || vimeo url), 
+    isVimeo = bool, 
+    color = (hex, rgba, or colorName)
+*/
+
 const Container = styled.div`
     background-color:${props => props.color || "none"};
     border-radius: 30px;

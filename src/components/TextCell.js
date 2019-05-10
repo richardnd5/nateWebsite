@@ -24,6 +24,7 @@ export default class TextCell extends Component {
   }
 }
 
+// How to use 'useContext' on a stateless functional component
 
 // export const TextCell = (props) => {
 //   const value = useContext(UserContext);
