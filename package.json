@@ -22,7 +22,10 @@
     "react-svg-morph": "^0.2.1",
     "react-textfit": "^1.1.0",
     "react-youtube": "^7.9.0",
-    "styled-components": "^4.2.0"
+    "styled-components": "^4.2.0",
+    "tone": "^13.4.9",
+    "waaclock": "^0.5.3",
+    "web-audio-touch-unlock": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

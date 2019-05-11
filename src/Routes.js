@@ -13,6 +13,7 @@ import { NoMatch } from './Pages/NoMatchPage/NoMatch'
 import HomeTests from './Pages/PlayPage/HomeTests'
 import Transcribe from './Pages/PlayPage/Transcribe'
 import Playground from './Pages/PlayPage/Playground'
+import Sequencer from './Pages/PlayPage/Sequencer'
 
 export const Routes = () => {
     return(
@@ -24,6 +25,7 @@ export const Routes = () => {
           <Route path="/transcribe" component= {Transcribe} />
           <Route path="/playground" component= {Playground} />
           <Route path="/HomeTests" component= {HomeTests} />
+          <Route path="/Sequencer" component= {Sequencer} />
           <Route path="/apps" component= {Apps} />
           <Route path="/arrangements" component= {Arrangements} />
           <Route path="/compositions" component= {Compositions} />

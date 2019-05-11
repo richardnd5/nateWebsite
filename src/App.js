@@ -82,7 +82,7 @@ class App extends Component {
               <SidebarText opacity={scrollPos/200}>N. Richard</SidebarText>
             </SidebarContainer>
             <Sidebar
-                children='none'
+                children=''
                 sidebar={ <CustomSideBar/>}
                 open={this.state.sidebarOpen}
                 onSetOpen={this.onSetSidebarOpen}

@@ -64,8 +64,8 @@ export const VideoCell = (props) => {
                     <Padding amount='25px 0 25px 0px' className='centerHorizontally'>
                     <ReactPlayer 
                     url={videoId} 
-                    width='300px' 
-                    height='200px'
+                    width='250px' 
+                    height='160px'
                     />
                     </Padding>
                 ) : (
@@ -73,8 +73,8 @@ export const VideoCell = (props) => {
                     <YouTube
                         videoId={videoId}
                         opts={{
-                        height: '200',
-                        width: '300'
+                        width: '250',
+                        height: '160',
                         }}
                         />
                     </Padding>

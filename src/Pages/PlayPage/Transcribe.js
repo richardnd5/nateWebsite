@@ -1,22 +1,39 @@
 import React, { Component } from 'react'
 import * as Music from './MusicXML.js'
+import styled from 'styled-components'
+
+const Words = styled.div`
+color: #eee;
+font-size: 40px;
+display: flex;
+align-content: center;
+justify-content: center;
+padding-top: 20vh;
+`
 
 export default class Transcribe extends Component {
+
+  state = {
+    words: ''
+  }
 
   componentDidMount() {
 
     const word = Music.returnString()
-    console.log(word)
+
+    this.setState({
+      words: word
+    })
   }
   
   render() {
+    const {words} = this.state
     return (
-      <div>
-        Hey!
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"> 
-        <path d="M150 40 L75 10 L225 200 Z" />
-        </svg>
-      </div>
+      <>
+      <Words>
+        {words}
+      </Words>
+      </>
     )
   }
 }
