@@ -9,10 +9,12 @@ if (!window.AudioContext) alert('you browser doesnt support Web Audio API')
 
 // To start Web Audio
 const context = new (window.AudioContext || window.webkitAudioContext)();
-webAudioTouchUnlock(context)
+const clock = new WAAClock(context, { toleranceEarly: 0.01 })
+const schedulePadding = 0.4
 
-let clock = new WAAClock(context, { toleranceEarly: 0.01 })
+webAudioTouchUnlock(context)
 Tone.setContext(context);
+
 
 const sampler = new Tone.Sampler({
     'A0': 'A0.[mp3|ogg]',
@@ -52,45 +54,6 @@ const sampler = new Tone.Sampler({
     }).toMaster();
 
 
-    function loadSequencer(noteString, key, mode, tempo, callback) {
-
-        let array = createNoteObjectArray(noteString, key, mode)
-
-        clock.start()
-
-        for (let i = 0; i < array.length; i++) {
-            const noteObject = array[i];
-
-            placeNoteInFuture(noteObject, tempo)
-
-            if (i === array.length - 1) {
-                const currentTime = context.currentTime
-                let endTime = ((noteObject.endPosition) / 4 + 0.4) * (60 / tempo)
-                clock.callbackAtTime(() => {
-                    callback()
-                }, (endTime) + currentTime)
-            }
-        };
-    }
-
-    function placeNoteInFuture(noteObject, tempo) {
-
-
-        const currentTime = context.currentTime
-        let startTime = (noteObject.startPosition / 4 + 0.4) * (60 / tempo)
-        let endTime = ((noteObject.endPosition) / 4 + 0.4) * (60 / tempo)
-
-        clock.callbackAtTime(() => {
-            sampler.triggerAttack(`${pitches[noteObject.note]}`);
-        }, (startTime) + currentTime)
-
-        clock.callbackAtTime(() => {
-            sampler.triggerRelease(`${pitches[noteObject.note]}`);
-        }, (endTime) + currentTime)
-    }
-
-
-
     export function playAllNotes(noteString, key, mode, tempo, callback){
                 
         loadSequencer(noteString, key, mode, tempo, callback)
@@ -105,4 +68,44 @@ const sampler = new Tone.Sampler({
         clock.stop()
         sampler.releaseAll()
     }
+
+    function loadSequencer(noteString, key, mode, tempo, callback) {
+
+        let array = createNoteObjectArray(noteString, key, mode)
+
+        clock.start()
+
+        for (let i = 0; i < array.length; i++) {
+            const noteObject = array[i];
+
+            placeNoteInFuture(noteObject, tempo)
+
+            if (i === array.length - 1) {
+                const currentTime = context.currentTime
+                let noteEndTime = ((noteObject.endPosition) / 4 + schedulePadding) * (60 / tempo)
+                clock.callbackAtTime(() => {
+                    callback()
+                }, (noteEndTime) + currentTime)
+            }
+        };
+    }
+
+    function placeNoteInFuture(noteObject, tempo) {
+
+        const {note, startPosition, endPosition} = noteObject
+
+        const currentTime = context.currentTime
+        let noteStartTime = (startPosition / 4 + schedulePadding) * (60 / tempo)
+        let noteEndTime = ((endPosition) / 4 + schedulePadding) * (60 / tempo)
+
+        clock.callbackAtTime(() => {
+            sampler.triggerAttack(`${pitches[note]}`);
+        }, (noteStartTime) + currentTime)
+
+        clock.callbackAtTime(() => {
+            sampler.triggerRelease(`${pitches[note]}`);
+        }, (noteEndTime) + currentTime)
+    }
+
+
 

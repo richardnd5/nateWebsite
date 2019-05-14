@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Modes, Key } from './MusicConstants'
 import { playAllNotes, stopSequencer } from './WebAudio' //has to be imported before sampler
 
-const Containerr = styled.div`
+const Container = styled.div`
     justify-content: center;
     -moz-align-items: center;
     -webkit-align-items: center;
@@ -22,7 +22,6 @@ const Containerr = styled.div`
     color: #ccc;
     font-family: 'Avenir';
     padding-top: 200px;
-
 `
 
 const Title = styled.div`
@@ -65,8 +64,8 @@ export default class SequencerPage extends Component {
     state = {
         toggleOn: true,
         noteString: '5;;;5;;34.32;;..4.4.3.2.32.1;;..',
-        key: Key["F#"],
-        mode: Modes.lydian,
+        key: Key["G"],
+        mode: Modes.ionian,
         tempo: 110
     };
 
@@ -74,7 +73,6 @@ export default class SequencerPage extends Component {
     turnOffButton = () => {
         this.setState({ toggleOn: !this.state.toggleOn })
     }
-
 
     handlePlayToggle = () => {
 
@@ -101,7 +99,7 @@ export default class SequencerPage extends Component {
 
     render() {
         return (
-            <Containerr>
+            <Container>
                 <Title>Simple Melody Maker</Title>
                 <br /><br />
                 <div style={{ textAlign: "center" }}>
@@ -132,7 +130,7 @@ export default class SequencerPage extends Component {
                 <BigButton onClick={this.handlePlayToggle} >
                     {this.state.toggleOn ? 'Play' : 'Stop'}
                 </BigButton>
-            </Containerr>
+            </Container>
         )
     }
 }
