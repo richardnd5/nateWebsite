@@ -1,41 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import Sidebar from "react-sidebar"
-import styled from 'styled-components'
-
 import { Routes } from './Routes'
 import { UserContext } from './UserContext'
-import { CustomSideBar } from './components/CustomSideBar'
-import hamburgerImage from './assets/hamburgerIcon.svg'
+import {Nav, Navbar} from 'react-bootstrap';
 
-const SidebarButton = styled.img`
-  position: fixed;
-  padding-left: 16px;
-  padding-top: 14px;
-  z-index: 100;
-`
-
-const SidebarContainer = styled.div`
-width: 100%;
-position: fixed;
-height: 60px;
-background-color: ${props => props.color || 'rgba(3, 3, 10, 1.0)'};
-
-display:flex;
-align-items: center;
-justify-content: flex-end;
-z-index: 1;
-padding-right: 20px;
-
-`
-
-const SidebarText = styled.div`
-
-color: #eee;
-font-family: 'Avenir';
-font-weight: bold;
-font-size: 1.0em;
-opacity: ${props => props.opacity || 0.0};
-`
 
 class App extends Component {
 
@@ -72,27 +39,26 @@ class App extends Component {
 
   render() {
 
-    const { scrollPos } = this.state
-
     return (
       <Fragment>
         <UserContext.Provider value={this.state}>
-            <SidebarButton onClick={() => this.onSetSidebarOpen(true)} src={hamburgerImage} alt="Menu"/>
-            <SidebarContainer color={`rgba(3, 3, 10, ${scrollPos/200})`} >
-              <SidebarText opacity={scrollPos/200}>N. Richard</SidebarText>
-            </SidebarContainer>
-            <Sidebar
-                children=''
-                sidebar={ <CustomSideBar/>}
-                open={this.state.sidebarOpen}
-                onSetOpen={this.onSetSidebarOpen}
-                styles={{ sidebar: { 
-                  background: "#d3cf4a", 
-                  position: 'fixed', 
-                  zIndex: '1000',
-                } }}>   
-            </Sidebar>
 
+        <Navbar expand="lg" fixed='top' >
+          <Navbar.Toggle aria-controls="basic-navbar-nav" style={{backgroundColor: '#bbd2e8'}}/>
+          <Navbar.Collapse id="basic-navbar-nav" style={{backgroundColor: '#bbd2e8'}}>
+            <Nav className="mr-auto" style={{backgroundColor: '#bbd2e8'}}>
+              <Nav.Item><Nav.Link href="/">Home</Nav.Link></Nav.Item>
+              <Nav.Item><Nav.Link href="/about">About</Nav.Link></Nav.Item>
+              <Nav.Item><Nav.Link href="/apps">Apps</Nav.Link></Nav.Item>
+              <Nav.Item><Nav.Link href="/arrangements">Arrangements</Nav.Link></Nav.Item>
+              <Nav.Item><Nav.Link href="/compositions">Compositions</Nav.Link></Nav.Item>
+              <Nav.Item><Nav.Link href="/sequencerPage">Sequencer</Nav.Link></Nav.Item>
+              <Nav.Item><Nav.Link href="/contact">Contact</Nav.Link></Nav.Item>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+        <br/>
+        <br/>
             <Routes/>
 
 

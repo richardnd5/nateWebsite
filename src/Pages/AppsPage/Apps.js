@@ -40,7 +40,7 @@ export const Apps = () => (
   <Heading>Published Apps</Heading>
   <SubHeading>Available for free on the Apple App Store</SubHeading>
   <Styles>
-  <Container className='AppContainer'>
+  <Container className='AppContainer' style={{zIndex: -1}}>
         <Row>
             <AppImage text='sStories' image={sStoriesImage} link='https://itunes.apple.com/us/app/sstories/id1455299421?mt=8&ign-mpt=uo%3D2' color='#31d'/>
             <AppImage text='CSA' image={CSAImage} link='https://itunes.apple.com/au/app/carls-sporting-adventure/id1265668085?mt=8' color='#345'/>

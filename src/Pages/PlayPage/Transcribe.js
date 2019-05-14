@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import * as Music from './MusicXML.js'
 import styled from 'styled-components'
 
 const Words = styled.div`
@@ -14,16 +13,11 @@ padding-top: 20vh;
 export default class Transcribe extends Component {
 
   state = {
-    words: ''
+    words: 'hey!'
   }
 
   componentDidMount() {
 
-    const word = Music.returnString()
-
-    this.setState({
-      words: word
-    })
   }
   
   render() {

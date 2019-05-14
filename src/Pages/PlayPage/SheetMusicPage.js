@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import OpenSheetMusicDisplay from '../../lib/OpenSheetMusicDisplay.jsx'
+import OpenSheetMusicDisplay from '../../lib/OpenSheetMusicDisplay'
 import styled from 'styled-components'
+import { generateXML } from './MusicXML'
 
 const Container = styled.div`
   background-color: #eee;
@@ -10,7 +11,7 @@ class SheetMusicPage extends Component {
   constructor(props) {
     super(props);
     // Don't call this.setState() here!
-    this.state = { file: "dingDong.xml" };
+    this.state = { file: generateXML() };
   }
 
   handleClick(event) {

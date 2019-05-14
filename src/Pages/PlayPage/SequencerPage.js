@@ -21,7 +21,7 @@ const Container = styled.div`
 
     color: #ccc;
     font-family: 'Avenir';
-    padding-top: 200px;
+
 `
 
 const Title = styled.div`
@@ -101,18 +101,6 @@ export default class SequencerPage extends Component {
         return (
             <Container>
                 <Title>Simple Melody Maker</Title>
-                <br /><br />
-                <div style={{ textAlign: "center" }}>
-                    <p>Every character is a "tick" in time. </p><br />
-                    <p>number = scale degree</p><br />
-                    <p>, = make previous note an octave down</p><br />
-                    <p>'' = make previous note an octave up</p><br />
-                    <p>b = flat the following note</p><br />
-                    <p># = sharp the following note</p><br />
-                    <p>; = hold previous note for one tick</p><br />
-                    <p>, = rest for one tick</p><br />
-                    
-                </div>
                 <form onSubmit={this.handleSubmit} >
                     <label>Type in a Melody</label><br />
                     <br />
@@ -130,6 +118,17 @@ export default class SequencerPage extends Component {
                 <BigButton onClick={this.handlePlayToggle} >
                     {this.state.toggleOn ? 'Play' : 'Stop'}
                 </BigButton>
+                <div style={{ textAlign: "center" }}>
+                    <p>Every character is a "tick" in time. </p><br />
+                    <p>number = scale degree</p><br />
+                    <p>, = make previous note an octave down</p><br />
+                    <p>'' = make previous note an octave up</p><br />
+                    <p>b = flat the following note</p><br />
+                    <p># = sharp the following note</p><br />
+                    <p>; = hold previous note for one tick</p><br />
+                    <p>, = rest for one tick</p><br />
+                    
+                </div>
             </Container>
         )
     }

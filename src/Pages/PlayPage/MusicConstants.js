@@ -6,11 +6,66 @@
 
 export const pitches = [];
 
+// export const noteNames = {
+//  C:"C",
+//  Cs:"C#",
+//  D:"D",
+//  Ds:"D#",
+//  E:"E",
+//  F:"F",
+//  Fs:"F#",
+//  G:"G",
+//  Gs:"G#",
+//  A:"A",
+//  As:"A#",
+//  B: "B"
+// }
+
+// beadgcf
+
+export const accidental = {
+    SHARP: {name:'sharp', alter: 1},
+    FLAT: {name:'flat', alter: -1},
+    NATURAL: {name:'natural', alter: 0}
+}
+
+export const keySignatures = {
+    "C": 0,
+    "Cs": 7,
+    "D": 2,
+    "E": 4,
+    "F": -1,
+    "Fs": 6,
+    "G": 1,
+    "A": 3,
+    "B": 5,
+    "Db": -5,
+    "Eb": -3,
+    "Gb": -6,
+    "Ab": -4,
+    "Bb": -2,
+    "C#": 7,
+    "F#": 6,
+}
+
+
+
 const noteLetters = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+
+
+
+export const noteTypes = {
+    WHOLE: {name:'whole', duration: 16},
+    HALF: {name:'half', duration: 8},
+    QUARTER: {name: 'quarter', duration: 4},
+    EIGHTH: {name: 'eighth', duration: 2},
+    SIXTEENTH: {name: '16th', duration: 1}
+}
 
 for (let j = 0; j < 9; j++) {
     for (let i = 0; i < noteLetters.length; i++) {
         pitches.push(`${noteLetters[i]}${j - 1}`)
+        console.log(`${noteLetters[i]}${j - 1}`)
     }
 }
 

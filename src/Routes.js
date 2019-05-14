@@ -7,6 +7,7 @@ import {Apps} from './Pages/AppsPage/Apps'
 import {Arrangements} from './Pages/ArrangementPage/Arrangements'
 import {Compositions} from './Pages/CompositionPage/Compositions'
 import { Contact } from './Pages/ContactPage/Contact'
+import ChantscriberPage from './Pages/ChantscriberPage/ChantscriberPage'
 import { NoMatch } from './Pages/NoMatchPage/NoMatch'
 
 // Playground pages
@@ -32,6 +33,7 @@ export const Routes = () => {
           <Route path="/apps" component= {Apps} />
           <Route path="/arrangements" component= {Arrangements} />
           <Route path="/compositions" component= {Compositions} />
+          <Route path="/ChantscriberPage" component= {ChantscriberPage} />
           <Route component= {NoMatch} />
         </Switch>
       </Router>
