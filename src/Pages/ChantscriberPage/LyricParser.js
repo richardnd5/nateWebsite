@@ -1,8 +1,8 @@
 function removeWhiteSpaceFromString(string){
     return string
     .replace(/-/g, '- ') // replace hyphens with hyphen space
-    .replace(/\s{2,10}/g, ' ') // replace carriage returns with space
     .replace(/\s{2,}/g, ' ') // replace multiple whitespaces with single space
+    .replace(/(\r\n|\n|\r)/gm," ") // replace carriage returns with space
     .trim() // removes whitespace at beginning and end
 }
 
@@ -20,7 +20,7 @@ export function createLyricObjects(string){
     lyricArray.forEach((e,i) => {
         let lyricObject = {
             syllable: e,
-            noteCount: 7,
+            noteCount: 1,
             position: i
         }
         lyricObjects.push(lyricObject)
