@@ -65,7 +65,6 @@ export const noteTypes = {
 for (let j = 0; j < 9; j++) {
     for (let i = 0; i < noteLetters.length; i++) {
         pitches.push(`${noteLetters[i]}${j - 1}`)
-        console.log(`${noteLetters[i]}${j - 1}`)
     }
 }
 

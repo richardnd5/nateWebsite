@@ -24,7 +24,12 @@ function removeWhiteSpaceFromString(string){
 function createInitialArray(string){
     let array = string
         .split("")
-        array.push("||")
+        array.push("||") // put a "double bar" at the end.
+
+        // if the first character is an ; remove it
+        while (array[0] === ";" || array[0] === "'" || array[0] === ","){
+            array.splice(0,1)
+        }
     return array
 }
 
