@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Modes, Key } from './MusicConstants'
+import { Modes, Key } from '../../backendJS/MusicConstants'
 import { playAllNotes, stopSequencer } from './WebAudio' //has to be imported before sampler
 
 const Container = styled.div`

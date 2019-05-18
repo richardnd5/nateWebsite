@@ -6,6 +6,9 @@ import {TextInputView} from './TextInputView'
 import {SyllableView} from './SyllableView'
 import {createLyricObjects} from './LyricParser'
 
+import { Modes, Key } from '../../backendJS/MusicConstants'
+import { createNoteObjectArray } from '../../backendJS/StringToNoteObject'
+
 const Container = styled.div`
   color: black;
   font-family: 'Avenir';
@@ -31,35 +34,52 @@ function ChantscriberPage() {
 
   const [melodyObjectArray, setMelodyObjects] = useState([])
 
+
   const incrementSyllableCount = index => {
     const newLyricObjectArray = [...lyricObjectArray]
     newLyricObjectArray[index].noteCount ++
     setLyricObjectArray(newLyricObjectArray);
-  };
+  }
 
+  const decrementSyllableCount = index => {
+    const newLyricObjectArray = [...lyricObjectArray]
+    let noteCount = newLyricObjectArray[index].noteCount
 
-    const handleLyricChange = (event) => {
-        const newLyricString = event.target.value
-        setLyrics(newLyricString)
+    noteCount > 1 ? newLyricObjectArray[index].noteCount-- : newLyricObjectArray[index].noteCount = 1
+    setLyricObjectArray(newLyricObjectArray);
+  }
 
-    }
-    const handleMelodyChange = (event) => {
-      const newMelody = event.target.value
-        setMelody(newMelody)
-    }
+  const handleLyricChange = (event) => {
+      const newLyricString = event.target.value
+      setLyrics(newLyricString)
+  }
+  const handleMelodyChange = (event) => {
+    const newMelody = event.target.value
+      setMelody(newMelody)
+  }
 
-    const handleNextStepButtonPressed = () => {
-      const arrayOfLyricObjects = createLyricObjects(lyricString)
-      setLyricObjectArray(arrayOfLyricObjects)
-    }
+  const processLyrics = () => {
+    const arrayOfLyricObjects = createLyricObjects(lyricString)
+    setLyricObjectArray(arrayOfLyricObjects)
+  }
+  
+  const processMelody = () => {
+    const melodyObjectArray = createNoteObjectArray(melodyString)
+    setMelodyObjects(melodyObjectArray)
+  }
 
   return (
 
     <Container>
       <TextInputView title='Lyrics' onChange={handleLyricChange} inputText={"howhow"}/>
-      <NextStepButton onClick={handleNextStepButtonPressed}>Go to Next Step!</NextStepButton>
-      <SyllableView lyricObjectArray={lyricObjectArray} incrementSyllableCount={incrementSyllableCount}/>
+      <NextStepButton onClick={processLyrics}>Process Lyrics</NextStepButton>
+      <SyllableView 
+        lyricObjectArray={lyricObjectArray} 
+        incrementSyllableCount={incrementSyllableCount}
+        decrementSyllableCount={decrementSyllableCount}
+      />
       <TextInputView title='Melody' onChange={handleMelodyChange} inputText={"should be melody string"}/>
+      <NextStepButton onClick={processMelody}>Process Melody</NextStepButton>
     </Container>
   );
 }

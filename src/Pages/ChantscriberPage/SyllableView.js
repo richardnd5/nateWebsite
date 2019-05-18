@@ -3,7 +3,7 @@ import {Syllable} from './Syllable'
 import { Container, Row } from 'react-bootstrap'
 
 
-export const  SyllableView = ({ lyricObjectArray, incrementSyllableCount }) =>{
+export const  SyllableView = ({ lyricObjectArray, incrementSyllableCount, decrementSyllableCount }) =>{
     return (
         <Container>
           <Row>
@@ -13,6 +13,7 @@ export const  SyllableView = ({ lyricObjectArray, incrementSyllableCount }) =>{
                   index={index}
                   lyricObject={lyricObject}
                   incrementSyllableCount={incrementSyllableCount}
+                  decrementSyllableCount={decrementSyllableCount}
                 />
               ))}
             </Row>

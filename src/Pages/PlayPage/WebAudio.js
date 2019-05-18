@@ -2,8 +2,8 @@ import WAAClock from 'waaclock'
 import webAudioTouchUnlock from 'web-audio-touch-unlock'
 import Tone from 'tone'
 
-import { pitches} from './MusicConstants'
-import { createNoteObjectArray } from './StringToNoteObject'
+import { pitches} from '../../backendJS/MusicConstants'
+import { createNoteObjectArray } from '../../backendJS/StringToNoteObject'
 
 if (!window.AudioContext) alert('you browser doesnt support Web Audio API')
 

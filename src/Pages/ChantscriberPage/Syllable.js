@@ -8,11 +8,12 @@ const Container = styled.div`
     cursor: pointer;
 `
 
-export const Syllable = ({ lyricObject, index, incrementSyllableCount }) => {
+export const Syllable = ({ lyricObject, index, incrementSyllableCount, decrementSyllableCount }) => {
     return (
       <Container>
           <div>{lyricObject.syllable}</div>
           <div>{lyricObject.noteCount}</div>
+          <button onClick={() => decrementSyllableCount(index)}>-</button>
           <button onClick={() => incrementSyllableCount(index)}>+</button>
       </Container>
     );

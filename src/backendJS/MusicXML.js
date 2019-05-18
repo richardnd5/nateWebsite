@@ -1,9 +1,6 @@
 import {noteTypes, keySignatures, accidental} from './MusicConstants'
 
-
 let mainXML = ``
-
-
 
 export const generateXML = () => {
     startXML()

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import OpenSheetMusicDisplay from '../../lib/OpenSheetMusicDisplay'
 import styled from 'styled-components'
-import { generateXML } from './MusicXML'
+import { generateXML } from '../../backendJS/MusicXML'
 
 const Container = styled.div`
   background-color: #eee;
