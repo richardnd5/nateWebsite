@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { Modes, Key } from '../../backendJS/MusicConstants'
 import { playAllNotes, stopSequencer } from './WebAudio' //has to be imported before sampler
 
+import {NoteScroll} from './NoteScroll'
+
 const Container = styled.div`
     justify-content: center;
     -moz-align-items: center;
@@ -100,6 +102,9 @@ export default class SequencerPage extends Component {
     render() {
         return (
             <Container>
+
+                <NoteScroll />
+
                 <Title>Simple Melody Maker</Title>
                 <form onSubmit={this.handleSubmit} >
                     <label>Type in a Melody</label><br />

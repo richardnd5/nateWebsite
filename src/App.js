@@ -13,28 +13,10 @@ class App extends Component {
     scrollTop: 0
   }
 
-  constructor(props){
-    super(props)
-    this.myRef = React.createRef()
 
-  }
-
-  componentDidMount() {
-    window.addEventListener('scroll', this.listenToScroll)
-  }
-  
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.listenToScroll)
-  }
 
   onSetSidebarOpen = (open) => {
     this.setState({ sidebarOpen: open });
-  }
-  
-  listenToScroll = () => {
-    this.setState({
-      scrollPos: window.pageYOffset,
-    })
   }
 
   render() {

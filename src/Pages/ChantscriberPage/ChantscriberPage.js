@@ -64,8 +64,9 @@ function ChantscriberPage() {
   }
   
   const processMelody = () => {
-    const melodyObjectArray = createNoteObjectArray(melodyString)
+    const melodyObjectArray = createNoteObjectArray(melodyString, Key.D, Modes.ionian)
     setMelodyObjects(melodyObjectArray)
+    console.log(melodyObjectArray)
   }
 
   return (
