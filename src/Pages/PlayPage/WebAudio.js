@@ -69,8 +69,7 @@ const sampler = new Tone.Sampler({
         sampler.releaseAll()
     }
 
-  
-
+    // HELPER FUNCTIONS
     function loadSequencer(noteString, key, mode, tempo, callback, harmonyChecked) {
 
         let array = createNoteObjectArray(noteString, key, mode)

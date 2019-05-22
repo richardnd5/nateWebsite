@@ -35,12 +35,4 @@ export const arrangements = [
     videoId: "2gFCxjdmWp0",
     color: "#1a3149",
     },
-    {
-    title :  "The Secret of Christmas" ,
-    subtitle: "Performed By Gilbert Youth Choir" ,
-    videoId: "https://vimeo.com/306218714/3d69f04610",
-    isVimeo: true,
-    color: "#1a3149",
-    },
-
 ]
