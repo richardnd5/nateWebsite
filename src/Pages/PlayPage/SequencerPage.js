@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Modes, Key } from '../../backendJS/MusicConstants'
 import { playAllNotes, stopSequencer } from './WebAudio' //has to be imported before sampler
 
-import {NoteScroll} from './NoteScroll'
+// import {NoteScroll} from './NoteScroll'
 
 const Container = styled.div`
     justify-content: center;
@@ -66,11 +66,13 @@ export default class SequencerPage extends Component {
     state = {
         toggleOn: true,
         noteString: '5;;;5;;34.32;;..4.4.3.2.32.1;;..',
-        key: Key["G"],
+        key: Key["E"],
+        keyString: "E",
         mode: Modes.ionian,
-        tempo: 110
+        modeString: "Ionian",
+        tempo: 110,
+        harmonyChecked: false
     };
-
 
     turnOffButton = () => {
         this.setState({ toggleOn: !this.state.toggleOn })
@@ -78,10 +80,10 @@ export default class SequencerPage extends Component {
 
     handlePlayToggle = () => {
 
-        let {noteString, key, mode, tempo, toggleOn} = this.state
+        let {noteString, key, mode, tempo, toggleOn, harmonyChecked} = this.state
 
         this.setState({ toggleOn: !this.state.toggleOn }, () => {
-            toggleOn ? playAllNotes(noteString, key, mode, tempo, this.turnOffButton) : stopSequencer()
+            toggleOn ? playAllNotes(noteString, key, mode, tempo, this.turnOffButton, harmonyChecked) : stopSequencer()
         })
     }
 
@@ -99,11 +101,30 @@ export default class SequencerPage extends Component {
         }
     }
 
+    handleKeySelect = (e) =>{
+        this.setState({
+            key: Key[e.target.value],
+            keyString: e.target.value
+        });
+
+      }
+    handleModeSelect = (e) =>{
+        const newMode = Modes[`${e.target.value}`]
+        this.setState({
+            mode: newMode,
+            modeString: e.target.value
+        });
+
+      }
+      handleHarmonyChecked = () => {
+        this.setState({ harmonyChecked: !this.state.harmonyChecked })
+      }
+
     render() {
         return (
             <Container>
 
-                <NoteScroll />
+                {/* <NoteScroll /> */}
 
                 <Title>Simple Melody Maker</Title>
                 <form onSubmit={this.handleSubmit} >
@@ -112,6 +133,39 @@ export default class SequencerPage extends Component {
                     <input type="text" onChange={this.handleTextAreaChange} onKeyPress={this.handleSubmit} placeholder={this.state.noteString} name="q" spellCheck="off" style={{ color: "black", width: "50vw", height: 100, textAlign: "center" }} />
                 </form>
                 <br />
+                
+                <h5>Key</h5>
+                <select value={this.state.keyString} onChange={this.handleKeySelect}>
+                <option value="C">C</option>
+                <option value="C#">C#/Db</option>
+                <option value="D">D</option>
+                <option value="D#">D#/Eb</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+                <option value="F#">F#/Gb</option>
+                <option value="G">G</option>
+                <option value="G#">G#/Ab</option>
+                <option value="A">A</option>
+                <option value="A#">A#/Bb</option>
+                <option value="B">B</option>
+                </select>
+
+                <br/>
+
+                <h5>Mode</h5>
+                <select value={this.state.modeString} onChange={this.handleModeSelect}>
+                <option value='ionian'>Ionian</option>
+                <option value='dorian'>Dorian</option>
+                <option value= 'phrygian'>Phrygian</option>
+                <option value='lydian'>Lydian</option>
+                <option value= 'mixolydian'>Mixolydian</option>
+                <option value='aeolian'>Aeolian</option>
+                <option value='locrian'>Locrian</option>
+                </select>
+
+                <br/>
+                <h5>Harmonized? (no ^7)</h5>
+                <input type="checkbox" value={this.state.harmonyChecked} onChange={this.handleHarmonyChecked} />                <br/>
                 <h5>Tempo: {this.state.tempo}</h5>
                 <CustomSlider
                     id="typeinp"

@@ -6,8 +6,8 @@ import {TextInputView} from './TextInputView'
 import {SyllableView} from './SyllableView'
 import {createLyricObjects} from './LyricParser'
 
-import { Modes, Key } from '../../backendJS/MusicConstants'
-import { createNoteObjectArray } from '../../backendJS/StringToNoteObject'
+// import { Modes, Key } from '../../backendJS/MusicConstants'
+// import { createNoteObjectArray } from '../../backendJS/StringToNoteObject'
 
 const Container = styled.div`
   color: black;
@@ -28,11 +28,11 @@ const NextStepButton = styled.button`
 function ChantscriberPage() {
 
   const [lyricString, setLyrics] = useState("")
-  const [melodyString, setMelody] = useState("")
+  // const [melodyString, setMelody] = useState("")
 
   const [lyricObjectArray, setLyricObjectArray] = useState([])
 
-  const [melodyObjectArray, setMelodyObjects] = useState([])
+  // const [setMelodyObjects] = useState([])
 
 
   const incrementSyllableCount = index => {
@@ -54,8 +54,8 @@ function ChantscriberPage() {
       setLyrics(newLyricString)
   }
   const handleMelodyChange = (event) => {
-    const newMelody = event.target.value
-      setMelody(newMelody)
+    // const newMelody = event.target.value
+      // setMelody(newMelody)
   }
 
   const processLyrics = () => {
@@ -63,11 +63,10 @@ function ChantscriberPage() {
     setLyricObjectArray(arrayOfLyricObjects)
   }
   
-  const processMelody = () => {
-    const melodyObjectArray = createNoteObjectArray(melodyString, Key.D, Modes.ionian)
-    setMelodyObjects(melodyObjectArray)
-    console.log(melodyObjectArray)
-  }
+  // const processMelody = () => {
+  //   const melodyObjectArray = createNoteObjectArray(melodyString, Key.D, Modes.ionian)
+  //   setMelodyObjects(melodyObjectArray)
+  // }
 
   return (
 
@@ -80,7 +79,7 @@ function ChantscriberPage() {
         decrementSyllableCount={decrementSyllableCount}
       />
       <TextInputView title='Melody' onChange={handleMelodyChange} inputText={"should be melody string"}/>
-      <NextStepButton onClick={processMelody}>Process Melody</NextStepButton>
+      {/* <NextStepButton onClick={processMelody}>Process Melody</NextStepButton> */}
     </Container>
   );
 }

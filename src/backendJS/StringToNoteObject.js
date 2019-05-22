@@ -12,6 +12,13 @@ export function createNoteObjectArray(theString, key, mode) {
     return createNoteObjectArrayFromMIDIArray(midiNoteArray)
 }
 
+export function createNoteObjectArrayHarmonized(theString, key, mode) {
+    let cleanedString = removeWhiteSpaceFromString(theString)
+    let initialArray = createInitialArray(cleanedString)
+    let midiNoteArray = convertArrayToMIDINumbers(initialArray, key, mode)
+    return createNoteObjectArrayFromMIDIArray(midiNoteArray)
+}
+
 // Cleans up string of spaces and carriage returns. 
 function removeWhiteSpaceFromString(string){
     return string
@@ -32,6 +39,30 @@ function createInitialArray(string){
         }
     return array
 }
+// function createInitialArrayHarmonized(string){
+//     let array = string
+//         .split("")
+//         array.push("||") // put a "double bar" at the end.
+
+//         // if the first character is an ; remove it
+//         while (array[0] === ";" || array[0] === "'" || array[0] === ","){
+//             array.splice(0,1)
+//         }
+
+//         let harmonizedArray = array
+
+//     for (let i = 0; i < harmonizedArray.length-1; i++) {
+//         const e = harmonizedArray[i];
+//             if (!isNaN(e)) {
+//                 let harmonizedNumber = parseInt(e,10)+2
+//                 harmonizedArray[i] = `${harmonizedNumber}`
+//             }
+        
+
+    
+// }
+//     return harmonizedArray
+// }
 
 /* replaces the given number with the scale degree number in MIDI 
 (while keeping a log of how many sharps and flats it has seen until the next number), 

@@ -2,15 +2,15 @@ import WAAClock from 'waaclock'
 import webAudioTouchUnlock from 'web-audio-touch-unlock'
 import Tone from 'tone'
 
-import { pitches} from '../../backendJS/MusicConstants'
-import { createNoteObjectArray } from '../../backendJS/StringToNoteObject'
+import { pitches, allPossibleTriadicHarmonyNotes } from '../../backendJS/MusicConstants'
+import { createNoteObjectArray} from '../../backendJS/StringToNoteObject'
 
 if (!window.AudioContext) alert('you browser doesnt support Web Audio API')
 
 // To start Web Audio
 const context = new (window.AudioContext || window.webkitAudioContext)();
 const clock = new WAAClock(context, { toleranceEarly: 0.01 })
-const schedulePadding = 0.4
+const scheduleDivisor = 150
 
 webAudioTouchUnlock(context)
 Tone.setContext(context);
@@ -54,9 +54,9 @@ const sampler = new Tone.Sampler({
     }).toMaster();
 
 
-    export function playAllNotes(noteString, key, mode, tempo, callback){
+    export function playAllNotes(noteString, key, mode, tempo, callback, harmonyChecked){
                 
-        loadSequencer(noteString, key, mode, tempo, callback)
+        loadSequencer(noteString, key, mode, tempo, callback, harmonyChecked)
 
         // You need to create a buffer source and connect the context to it in order to hear the audio on mobile. That's the 3 lines of code below.
         var source = context.createBufferSource();
@@ -69,43 +69,82 @@ const sampler = new Tone.Sampler({
         sampler.releaseAll()
     }
 
-    function loadSequencer(noteString, key, mode, tempo, callback) {
+  
+
+    function loadSequencer(noteString, key, mode, tempo, callback, harmonyChecked) {
 
         let array = createNoteObjectArray(noteString, key, mode)
-
         clock.start()
-
+        
         for (let i = 0; i < array.length; i++) {
             const noteObject = array[i];
+            const schedulingPadding = tempo/scheduleDivisor
 
             placeNoteInFuture(noteObject, tempo)
 
+            if (harmonyChecked){
+                placeHarmonyInFuture(noteObject, tempo, key, mode, -9)
+                placeHarmonyInFuture(noteObject, tempo, key, mode, -5)
+            }
+
+
             if (i === array.length - 1) {
                 const currentTime = context.currentTime
-                let noteEndTime = ((noteObject.endPosition) / 4 + schedulePadding) * (60 / tempo)
+                let noteEndTime = ((noteObject.endPosition) / 4 + schedulingPadding) * (60 / tempo)
                 clock.callbackAtTime(() => {
                     callback()
                 }, (noteEndTime) + currentTime)
             }
         };
+        clock.start()
     }
 
     function placeNoteInFuture(noteObject, tempo) {
 
         const {note, startPosition, endPosition} = noteObject
 
+        const schedulingPadding = tempo/scheduleDivisor
+
+
         const currentTime = context.currentTime
-        let noteStartTime = (startPosition / 4 + schedulePadding) * (60 / tempo)
-        let noteEndTime = ((endPosition) / 4 + schedulePadding) * (60 / tempo)
+        let noteStartTime = (startPosition / 4 + schedulingPadding) * (60 / tempo)
+        let noteEndTime = ((endPosition) / 4 + schedulingPadding) * (60 / tempo)
 
         clock.callbackAtTime(() => {
+
             sampler.triggerAttack(`${pitches[note]}`);
         }, (noteStartTime) + currentTime)
 
         clock.callbackAtTime(() => {
             sampler.triggerRelease(`${pitches[note]}`);
+            
         }, (noteEndTime) + currentTime)
     }
 
+    function placeHarmonyInFuture(noteObject, tempo, key, mode, semitones){
+        const {note, startPosition, endPosition} = noteObject
+        let noteToInsert = note+semitones
+        const schedulingPadding = tempo/scheduleDivisor
 
+        
+        // const allNotes = allPossibleDiatonicNotes(key,mode)
+        // console.log(key,mode)
+        const allNotes = allPossibleTriadicHarmonyNotes(key,mode)
+        if (!allNotes.includes(noteToInsert)){
+            noteToInsert = noteToInsert+1
 
+        }
+
+        const currentTime = context.currentTime
+        let noteStartTime = (startPosition / 4 + schedulingPadding) * (60 / tempo)
+        let noteEndTime = ((endPosition) / 4 + schedulingPadding) * (60 / tempo)
+
+        clock.callbackAtTime(() => {
+            sampler.triggerAttack(`${pitches[noteToInsert]}`)
+        }, (noteStartTime) + currentTime)
+
+        clock.callbackAtTime(() => {
+            sampler.triggerRelease(`${pitches[noteToInsert]}`)
+            
+        }, (noteEndTime) + currentTime)
+    }
