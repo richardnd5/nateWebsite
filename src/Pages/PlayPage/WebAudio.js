@@ -3,14 +3,14 @@ import webAudioTouchUnlock from 'web-audio-touch-unlock'
 import Tone from 'tone'
 
 import { pitches, allPossibleTriadicHarmonyNotes } from '../../backendJS/MusicConstants'
-import { createNoteObjectArray} from '../../backendJS/StringToNoteObject'
+import { createNoteObjectArray} from '../../backendJS/StringToNoteObjectTypes'
 
 if (!window.AudioContext) alert('you browser doesnt support Web Audio API')
 
 // To start Web Audio
 const context = new (window.AudioContext || window.webkitAudioContext)();
 const clock = new WAAClock(context, { toleranceEarly: 0.01 })
-const scheduleDivisor = 150
+const scheduleDivisor = 150 // a number to divide the tempo by to ensure scheduling events don't expire (miss their deadline)
 
 webAudioTouchUnlock(context)
 Tone.setContext(context);
@@ -104,7 +104,6 @@ const sampler = new Tone.Sampler({
 
         const schedulingPadding = tempo/scheduleDivisor
 
-
         const currentTime = context.currentTime
         let noteStartTime = (startPosition / 4 + schedulingPadding) * (60 / tempo)
         let noteEndTime = ((endPosition) / 4 + schedulingPadding) * (60 / tempo)
@@ -124,14 +123,12 @@ const sampler = new Tone.Sampler({
         const {note, startPosition, endPosition} = noteObject
         let noteToInsert = note+semitones
         const schedulingPadding = tempo/scheduleDivisor
-
-        
+    
         // const allNotes = allPossibleDiatonicNotes(key,mode)
         // console.log(key,mode)
         const allNotes = allPossibleTriadicHarmonyNotes(key,mode)
         if (!allNotes.includes(noteToInsert)){
             noteToInsert = noteToInsert+1
-
         }
 
         const currentTime = context.currentTime
@@ -147,3 +144,5 @@ const sampler = new Tone.Sampler({
             
         }, (noteEndTime) + currentTime)
     }
+
+

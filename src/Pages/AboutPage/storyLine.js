@@ -1,4 +1,4 @@
-const storyLine = [
+export const storyLine = [
     'Hello!',
     'This page is still under construction',
     "Thank you for visiting my website.",
@@ -34,4 +34,4 @@ const storyLine = [
 //     "I hope you enjoy!",
 // ]
 
-module.exports = storyLine
+// module.exports = storyLine

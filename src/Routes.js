@@ -15,7 +15,7 @@ import HomeTests from './Pages/PlayPage/HomeTests'
 import Transcribe from './Pages/PlayPage/Transcribe'
 import Playground from './Pages/PlayPage/Playground'
 import SequencerPage from './Pages/PlayPage/SequencerPage'
-import SheetMusicPage from './Pages/PlayPage/SheetMusicPage'
+
 
 
 export const Routes = () => {
@@ -29,7 +29,6 @@ export const Routes = () => {
           <Route path="/playground" component= {Playground} />
           <Route path="/HomeTests" component= {HomeTests} />
           <Route path="/SequencerPage" component= {SequencerPage} />
-          <Route path="/SheetMusicPage" component= {SheetMusicPage} />
           <Route path="/apps" component= {Apps} />
           <Route path="/arrangements" component= {Arrangements} />
           <Route path="/compositions" component= {Compositions} />

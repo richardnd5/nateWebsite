@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import styled from 'styled-components'
 import {StickyText} from '../../components/StickyText'
-import storyLine from './storyLine'
+import {storyLine} from './storyLine'
 
 const divHeight = 60
 

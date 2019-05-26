@@ -43,30 +43,9 @@ export const Key = {
      "A#": 70,
 }
 
-// export const noteNames = {
-//  C:"C",
-//  Cs:"C#",
-//  D:"D",
-//  Ds:"D#",
-//  E:"E",
-//  F:"F",
-//  Fs:"F#",
-//  G:"G",
-//  Gs:"G#",
-//  A:"A",
-//  As:"A#",
-//  B: "B"
-// }
 
-// beadgcf
 
-export const accidental = {
-    SHARP: {name:'sharp', alter: 1},
-    FLAT: {name:'flat', alter: -1},
-    NATURAL: {name:'natural', alter: 0}
-}
-
-export const keySignatures = {
+export const KeySignatures = {
     "C": 0,
     "Cs": 7,
     "D": 2,
@@ -85,7 +64,20 @@ export const keySignatures = {
     "F#": 6,
 }
 
-
+export const KeySignaturesFromMidiNote = {
+    60: 0,
+    61: -5,
+    62: 2,
+    63: -3,
+    64: 4,
+    65: -1,
+    66: -6,
+    67: 1,
+    68: -4,
+    69: 3,
+    70: -2,
+    71: 5,
+}
 
 export function allPossibleDiatonicNotes(key, mode){
     let array = []
@@ -108,11 +100,7 @@ export function allPossibleDiatonicNotes(key, mode){
 }
 
 export function allPossibleTriadicHarmonyNotes(key, mode){
-    
-
     let array = []
-
-
     let moduloCounter = 0
     for (let i = 0; i < 300; i++) {
 
@@ -130,16 +118,41 @@ export function allPossibleTriadicHarmonyNotes(key, mode){
         }
         array.push(noteToAdd)
     }
-
-
     return array
 }
 
 
-export const noteTypes = {
+export const NoteTypes = {
     WHOLE: {name:'whole', duration: 16},
     HALF: {name:'half', duration: 8},
     QUARTER: {name: 'quarter', duration: 4},
     EIGHTH: {name: 'eighth', duration: 2},
-    SIXTEENTH: {name: '16th', duration: 1}
+    SIXTEENTH: {name: '16th', duration: 1},
+    THIRTYSECOND: {name: '32nd', duration: 1},
+    SIXTYFOURTH: {name: '64th', duration: 1},
+    ONETWENTYEIGHTH: {name: '128th', duration: 1}
+}
+
+export const slurType = {
+    START: 'start',
+    STOP: 'stop'
+}
+
+export const SyllabicType = {
+    BEGIN: 'begin',
+    CONTINUE: '',
+    END: 'end'
+}
+
+export const accidental = {
+    SHARP: {name:'sharp', alter: 1},
+    FLAT: {name:'flat', alter: -1},
+    NATURAL: {name:'natural', alter: 0},
+    NONE: {name: '', alter: 0}
+}
+
+
+export function Lyric(text, syllabic) {
+    this.text = text;
+    this.syllabic = syllabic;
 }
