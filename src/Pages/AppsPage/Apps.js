@@ -35,8 +35,13 @@ const Styles = styled.div`
 }
 `
 
+const BackgroundColor = styled.div`
+  background: linear-gradient(#0a1c25 0, #0a1c77 100%);
+  height: 100vh;
+`
+
 export const Apps = () => (
-<>
+<BackgroundColor>
   <Heading>Published Apps</Heading>
   <SubHeading>Available for free on the Apple App Store</SubHeading>
   <Styles>
@@ -47,7 +52,7 @@ export const Apps = () => (
         </Row>
   </Container>
   </Styles>
-</>
+</BackgroundColor>
 )
 
 

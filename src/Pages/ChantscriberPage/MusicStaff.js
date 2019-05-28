@@ -6,6 +6,8 @@ const Container = styled.div`
     align-content: center;
     justify-content: center;
     flex-direction: column;
+    background-color: #fff;
+    width: 100%;
 `
 
 const Line = styled.div`
@@ -13,7 +15,9 @@ const Line = styled.div`
     width: 100%;
     background-color: ${props => props.line ? 'black' : 'clear'};
     margin-top: 3px;
-
+    display: flex;
+    align-content: center;
+    justify-content: center;
 `
 
 const Dot = styled.div`
@@ -35,10 +39,7 @@ export const MusicStaff = () => (
         </Line>
         <Line>
         </Line>
-        <Line line={true}>
-            <Dot/>
-        
-        </Line>
+        <Line line={true}/>
         <Line/>
         <Line line={true}/>
         <Line/>

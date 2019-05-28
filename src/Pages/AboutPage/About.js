@@ -8,6 +8,7 @@ const divHeight = 60
 const Container = styled.div`
 text-align: center;
 overflow: 'hidden';
+background: linear-gradient(#0a1c25 0, #0a1c77 100%);
 `
 
 const Padding = styled.div`

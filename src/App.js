@@ -25,7 +25,8 @@ class App extends Component {
       <Fragment>
         <UserContext.Provider value={this.state}>
 
-        <Navbar expand="lg" fixed='top' >
+
+        <Navbar expand="lg" fixed='top' style={{background: '#0a1c25'}}>
           <Navbar.Toggle aria-controls="basic-navbar-nav" style={{backgroundColor: '#bbd2e8'}}/>
           <Navbar.Collapse id="basic-navbar-nav" style={{backgroundColor: '#bbd2e8'}}>
             <Nav className="mr-auto" style={{backgroundColor: '#bbd2e8'}}>
@@ -42,10 +43,6 @@ class App extends Component {
         <br/>
         <br/>
             <Routes/>
-
-
-
-
         </UserContext.Provider>
       </Fragment>
     );

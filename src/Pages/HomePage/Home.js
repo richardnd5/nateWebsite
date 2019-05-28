@@ -8,10 +8,16 @@ import ArrangementsImage from '../../assets/ArrangementsImage.jpg'
 import CompositionsImage from '../../assets/CompositionsImage.jpg'
 import GitHubIcon from '../../assets/GitHub-Mark-64px.png'
 import {SocialMediaIcon} from '../../components/SocialMediaIcon'
+import styled from 'styled-components'
+
+const Background = styled.div`
+      background: linear-gradient(#0a1c25 0, #0a1c77 100%);
+
+`
 
 
 export const Home = () => (
-  <div>
+  <Background>
     <Header title='N. Richard' subtitle="Musician, Developer, Educator"/>
     <Container>
       <Row noGutters style={{'paddingTop': 20}}>
@@ -33,5 +39,5 @@ export const Home = () => (
             </div>
 
     </Container>
-  </div>
+  </Background>
 )

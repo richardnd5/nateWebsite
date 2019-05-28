@@ -2,11 +2,15 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Modes, Key } from '../../backendJS/MusicConstants'
 import { playAllNotes, stopSequencer } from './WebAudio' //has to be imported before sampler
-// import {SheetMusicPage} from './SheetMusicPage'
+import {SheetMusicPage} from './SheetMusicPage'
 import { generateXMLFromNoteObject } from '../../backendJS/MusicXMLTypes'
 // import {add} from '../../backendJS/MusicXMLTypes'
 // import {testing} from '../../backendJS/MusicConstantTypes'
-import {makeStepwiseMelody} from './MelodyGenerator'
+import {makingMelodyAgain} from './MelodyGenerator'
+// import { write } from 'fs';
+ import {MelodyGeneratorView} from './MelodyGeneratorView'
+import { createNoteObjectArray } from '../../backendJS/StringToNoteObjectTypes';
+
 
 // import {NoteScroll} from './NoteScroll'
 
@@ -28,6 +32,7 @@ const Container = styled.div`
 
     color: #ccc;
     font-family: 'Avenir';
+    background: linear-gradient(#0a1c25 0, #0a1c77 100%);
 
 `
 
@@ -66,6 +71,16 @@ const BigButton = styled.div`
     font-size: 1em;
 `
 
+const TextArea = styled.textarea`
+    resize: none;
+
+    height: 30vh;
+    width: 80vw;
+
+
+
+`
+
 export default class SequencerPage extends Component {
 
     state = {
@@ -75,9 +90,11 @@ export default class SequencerPage extends Component {
         keyString: "C",
         mode: Modes.ionian,
         modeString: "Ionian",
-        tempo: 110,
+        tempo: 68,
         harmonyChecked: false,
-        xml: ''
+        xml: '',
+
+        noteObjects: []
     };
 
     turnOffButton = () => {
@@ -130,7 +147,6 @@ export default class SequencerPage extends Component {
 
     createNoteObjectsFromString = () =>{ 
         
-        
         const {noteString,key,mode} = this.state
         const newXML = generateXMLFromNoteObject(noteString,key,mode)
 
@@ -140,32 +156,47 @@ export default class SequencerPage extends Component {
     }
 
     setMelody = () =>{
-        // const string = makeRandomMelody()
-        const string = makeStepwiseMelody()
+
+        const string = makingMelodyAgain()
+        let {key, mode} = this.state
+
+
         this.setState({
-            noteString: string
+            noteString: string,
+
+
+        }, () => {
+            let {noteString} = this.state
+            const objectArray = createNoteObjectArray(noteString, key, mode)
+            this.setState({
+                noteObjects: objectArray
+            })
         })
     }
 
+
     render() {
 
-        // const {xml} = this.state
+        const {noteObjects, xml} = this.state
         return (
             <div>
 
 
             <Container>
 
-
                 <Title>Simple Melody Maker</Title>
                 <form onSubmit={this.handleSubmit} >
                     <label>Type in a Melody</label><br />
+                    <label>(Scroll Down To See Key)</label>
                     <br />
-                    <input type="text" onChange={this.handleTextAreaChange} onKeyPress={this.handleSubmit} placeholder={this.state.noteString} name="q" spellCheck="off" style={{ color: "black", width: "50vw", height: 100, textAlign: "center" }} />
+                    {/* <input type="text" onChange={this.handleTextAreaChange} onKeyPress={this.handleSubmit} placeholder={this.state.noteString} name="q" spellCheck="off" style={{ color: "black", width: "50vw", height: 100, textAlign: "center" }} /> */}
+                    <TextArea onChange={this.handleTextAreaChange} value={this.state.noteString} placeholder={this.state.noteString} spellCheck="off" wrap="hard"/>
                 </form>
                 <br />
 
-                <button onClick={this.setMelody}>Or Generate a Stepwise Melody</button>
+                <button onClick={this.setMelody}>Or Generate a Melody</button>
+                <br/>
+                {/* <button onClick={makingMelodyAgain}>Generate Random Number</button> */}
                 
                 <h5>Key</h5>
                 <select value={this.state.keyString} onChange={this.handleKeySelect}>
@@ -223,11 +254,13 @@ export default class SequencerPage extends Component {
                 </div>
 
             </Container>
+                <br/>
+                
 
-                <br/><br/><br/><br/>
-                {/* <div>This part under construction</div>
-                <SheetMusicPage xml={xml}/>
-            <button onClick={this.createNoteObjectsFromString}>Create Sheet Music</button> */}
+                <div>This part of the page is still under construction</div>
+                <MelodyGeneratorView noteObjects={noteObjects}/>
+                {/* <SheetMusicPage xml={xml}/> */}
+            {/* <button onClick={this.createNoteObjectsFromString}>Create Sheet Music</button> */}
                 </div>
 
                 

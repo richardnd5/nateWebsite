@@ -7,13 +7,14 @@ import Sticky from 'react-stickynode';
 
 
 const Styles = styled.div`
-.textAlign{
-    text-align: center;
-}
+    background: linear-gradient(#0a1c25 0, #0a1c77 100%);
+    .textAlign{
+        text-align: center;
+    }
 
-.paddingTop{
-    padding-top: 50px;
-}
+    .paddingTop{
+        padding-top: 50px;
+    }
 
 `
 const Text = styled.div`
