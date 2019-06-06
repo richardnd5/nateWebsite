@@ -7,11 +7,11 @@ import {Apps} from './Pages/AppsPage/Apps'
 import {Arrangements} from './Pages/ArrangementPage/Arrangements'
 import {Compositions} from './Pages/CompositionPage/Compositions'
 import { Contact } from './Pages/ContactPage/Contact'
-import ChantscriberPage from './Pages/ChantscriberPage/ChantscriberPage'
-import {ModelPage} from './Pages/ModelPage/ModelPage'
 import { NoMatch } from './Pages/NoMatchPage/NoMatch'
 
 // Playground pages
+import ChantscriberPage from './Pages/ChantscriberPage/ChantscriberPage'
+import {ModelPage} from './Pages/ModelPage/ModelPage'
 import HomeTests from './Pages/PlayPage/HomeTests'
 import Transcribe from './Pages/PlayPage/Transcribe'
 import Playground from './Pages/PlayPage/Playground'

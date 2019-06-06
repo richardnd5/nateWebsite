@@ -46,8 +46,6 @@ const SubHeading = styled.h4`
 
 
 export const BackgroundPad = (props) => {
-
-  const { heading, subheading, text } = props;
   return (
 
           <Container>

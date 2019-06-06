@@ -6,7 +6,7 @@ export const storyLine = [
     "A professional musician who", 
     "learned he loved software development just a few years ago",
     "I am passionate about creativity",
-    "I am building this website as a way to practice Javascript and React.",
+    "I am building this website as a way to practice Javascript (some Typescript) and React.",
     "I hope you enjoy!"
 ]
 
