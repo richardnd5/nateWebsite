@@ -3,84 +3,66 @@ import styled from 'styled-components'
 
 
 const Container = styled.div`
-
-/* background-image: ${props => `url(${props.image})`};
-background-repeat: no-repeat;
-background-size: cover;
-
-background-color: ${props => props.color || "#222"};
-background-blend-mode: multiply; */
-
-/* 
-height: 50vw;
-width: 100vw;
-
-@media (min-width: 700px) {
-  height: 70vh;
-
-
-} */
-
-
-
-
+  position: relative;
 `
 
 
 const Image = styled.img`
   max-width: 100%;
   height: auto;
-  background: #333;
+  filter:brightness(60%);
 
 `
 
 const Content = styled.div`
   background: black;
   font-family: 'Avenir';
-  padding: 20px 0;
+  padding: 20px 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   @media (min-width: 64em) {
     background: none;
 
-    position: fixed;
+    width: 50%;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    top: 100px;
     left: 0;
     right: 0;
-    top: 100px;
-    bottom: 0;
     z-index: 5;
+    font-size: 2.4em;
 
 
 }
 `
 
 const Heading = styled.h1`
-  color: #888;
+  color: #fff;
   font-size: 2em;
+
 `
 
 const SubHeading = styled.h4`
-  color: #fff;
+  color: #ddd;
   font-size: 1em;
 `
 
-
 export const PhotoAndText = (props) => {
 
-  const { text, color, image } = props;
+  const { heading, subheading, image } = props;
   return (
 
           <Container>
             <Image src={image}/>
             <Content>
-            <Heading>{text}</Heading>
-            <SubHeading>Just a little about</SubHeading>
+              <Heading>{heading}</Heading>
+              <SubHeading>{subheading}</SubHeading>
             </Content>
-            
           </Container>
-        // </Nav.Link></Nav.Item>
-
-
-
 
   );
 }

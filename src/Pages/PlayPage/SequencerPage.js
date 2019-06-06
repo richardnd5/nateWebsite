@@ -259,8 +259,8 @@ export default class SequencerPage extends Component {
 
                 <div>This part of the page is still under construction</div>
                 <MelodyGeneratorView noteObjects={noteObjects}/>
-                {/* <SheetMusicPage xml={xml}/> */}
-            {/* <button onClick={this.createNoteObjectsFromString}>Create Sheet Music</button> */}
+                <SheetMusicPage xml={xml}/>
+            <button onClick={this.createNoteObjectsFromString}>Create Sheet Music</button>
                 </div>
 
                 

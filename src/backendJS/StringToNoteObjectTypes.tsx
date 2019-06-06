@@ -16,36 +16,12 @@ interface Key {
 
 const acceptableCharacters: string[] = [":", ";", "'", ",", ".", "b", "#", "-", "||", "=", "(", ")"]
 
-// const C : Key = {name: 'C', number: 60}
-// const Cs: Key = {name: 'Cs', number: 61}
-// const D: Key = {name: 'D', number: 62}
-// const Ds: Key = {name: 'Ds', number: 63}
-// const E: Key = {name: 'E', number: 64}
-// const F: Key = {name: 'F', number: 65}
-// const Fs: Key = {name: 'Fs', number: 66}
-// const G: Key = {name: 'G', number: 67}
-// const Gs: Key = {name: 'Gs', number: 68}
-// const A: Key = {name: 'A', number: 69}
-// const As: Key = {name: 'As', number: 70}
-// const B: Key = {name: 'B', number: 71}
-
 export function createNoteObjectArray(theString:string, key:number, mode: number[]) {
     let cleanedString : string = removeWhiteSpaceFromString(theString)
     let initialArray : string[] = createInitialArray(cleanedString)
     let midiNoteArray : string[] = convertArrayToMIDINumbers(initialArray, key, mode)
     return createNoteObjectArrayFromMIDIArray(midiNoteArray)
 }
-
-// export function createNoteObjectArrayHarmonized(theString, key, mode) {
-//     let cleanedString = removeWhiteSpaceFromString(theString)
-//     let initialArray = createInitialArray(cleanedString)
-//     let midiNoteArray = convertArrayToMIDINumbers(initialArray, key, mode)
-//     return createNoteObjectArrayFromMIDIArray(midiNoteArray)
-// }
-
-
-
-
 
 // Cleans up string of spaces and carriage returns. 
 function removeWhiteSpaceFromString(string: string){

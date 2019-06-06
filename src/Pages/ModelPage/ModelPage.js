@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import {PhotoAndText} from '../../components/PhotoAndText'
+import {PhotoAndText} from './PhotoAndText'
 import testImage from '../../assets/testImage.jpg'
-import {BackgroundPad} from '../../components/BackgroundPad'
+import {BackgroundPad} from './BackgroundPad'
 
 const Container = styled.div`
 /* display: flex; */
@@ -12,10 +12,7 @@ const Container = styled.div`
 `
 export const ModelPage = () => (
     <Container>
-
-        <PhotoAndText text='About' color='rgba(50, 50, 50, 0.4)' image={testImage} link='/about'/>
+        <PhotoAndText heading='About' subheading='just a model' image={testImage}/>
         <BackgroundPad/>
-
-
     </Container>
 )
