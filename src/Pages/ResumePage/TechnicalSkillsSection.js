@@ -1,0 +1,87 @@
+import React from 'react'
+import styled from 'styled-components'
+
+
+const Container = styled.div`
+
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    background-color: white;
+    margin: 30px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 1px #ccc;
+    padding: 30px;
+
+
+    @media (min-width: 800px) {
+        flex-direction: row;
+        width: 70%;
+    }
+
+
+@media (min-width: 800px) {
+    width: 60%;
+}
+@media (min-width: 1200px) {
+    width: 50%;
+}
+
+`
+
+
+const HeadingContainer = styled.div`
+
+    color: #0e289b;
+    padding: 10px;
+
+    width: 70%;
+    text-align: center;
+
+    @media (min-width: 800px) {
+        text-align: right;
+        width: 30%;
+        padding-right: 30px;
+    }
+`
+
+const Heading = styled.div`
+    font-size: 1.2em;
+`
+const Subheading = styled.div`
+    font-size: 0.7em;
+`
+
+const List = styled.ul`
+
+padding-top: 20px;
+width: 60vw;
+
+@media (max-width: 800px) {
+    width: 80vw;
+}
+
+`
+
+
+export const TechnicalSkillsSection = ({heading, bulletPoints,years}) => {
+
+    return(
+    <Container>
+        <HeadingContainer>
+            <Heading>{heading}</Heading>
+            <Subheading>{`(${years} years)`}</Subheading>
+        </HeadingContainer>
+            
+            <List>
+                {bulletPoints.map(text=> (
+                    <li>{text}</li>
+                ))}
+            </List>
+    </Container>
+
+)}

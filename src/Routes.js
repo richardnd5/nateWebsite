@@ -8,6 +8,7 @@ import {Arrangements} from './Pages/ArrangementPage/Arrangements'
 import {Compositions} from './Pages/CompositionPage/Compositions'
 import { Contact } from './Pages/ContactPage/Contact'
 import { NoMatch } from './Pages/NoMatchPage/NoMatch'
+import { ResumePage } from './Pages/ResumePage/ResumePage'
 
 // Playground pages
 import ChantscriberPage from './Pages/ChantscriberPage/ChantscriberPage'
@@ -16,7 +17,7 @@ import HomeTests from './Pages/PlayPage/HomeTests'
 import Transcribe from './Pages/PlayPage/Transcribe'
 import Playground from './Pages/PlayPage/Playground'
 import SequencerPage from './Pages/PlayPage/SequencerPage'
-
+  
 export const Routes = () => {
     return(
         <Router>
@@ -27,6 +28,7 @@ export const Routes = () => {
           <Route path="/transcribe" component= {Transcribe} />
           <Route path="/playground" component= {Playground} />
           <Route path="/HomeTests" component= {HomeTests} />
+          <Route path="/ResumePage" component= {ResumePage} />
           <Route path="/SequencerPage" component= {SequencerPage} />
           <Route path="/apps" component= {Apps} />
           <Route path="/arrangements" component= {Arrangements} />

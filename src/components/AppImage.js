@@ -23,6 +23,7 @@ background-position: 55% 40%;
 
 background-size: 100%;
 font-size: 1.5em;
+text-align: center;
 
 cursor: pointer;
 transition: 0.5s;

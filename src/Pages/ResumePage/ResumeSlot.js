@@ -1,0 +1,75 @@
+import React from 'react'
+import styled from 'styled-components'
+
+
+const Container = styled.div`
+
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    background-color: white;
+    margin: 30px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 1px #ccc;
+    padding: 30px;
+
+
+    /* @media (min-width: 900px) {
+        flex-direction: row;
+        width: 60%;
+    } */
+
+
+@media (min-width: 800px) {
+
+    width: 60%;
+}
+@media (min-width: 1200px) {
+    width: 50%;
+}
+
+`
+
+
+const HeadingContainer = styled.div`
+
+    color: #0e289b;
+    padding: 10px;
+    width: 70%;
+    text-align: center;
+
+`
+
+const Heading = styled.div`
+    font-size: 1.2em;
+`
+const Subheading = styled.div`
+    font-size: 0.7em;
+`
+
+const List = styled.ul`
+    padding-top: 20px;
+`
+
+
+export const ResumeSlot = ({heading, bulletPoints,dates}) => {
+
+    return(
+    <Container>
+        <HeadingContainer>
+            <Heading>{heading}</Heading>
+            <Subheading>{`${dates}`}</Subheading>
+        </HeadingContainer>
+            
+            <List>
+                {bulletPoints.map(text=> (
+                    <li>{text}</li>
+                ))}
+            </List>
+    </Container>
+
+)}
