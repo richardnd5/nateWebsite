@@ -37,6 +37,7 @@ const Heading = styled.h5`
     padding-top: 20px;
     font-size: 1.5em;
     color: #0e289b;
+    text-align: center;
 `
 const Subheading = styled.div`
 font-size: 0.9em;
@@ -141,7 +142,7 @@ export const ResumePage = () => (
                     'Updated assets to higher resolution images',
                     'Updated and improved stock songs',
                     'Added stereo audio in headphones',
-                    ' Fixed minor user interface issues',
+                    'Fixed minor user interface issues',
                     'Fixed several issues that could cause the application to crash',
                     'Updated for iOS 7 and iOS 8 compatibility'
                     ]} 
@@ -197,8 +198,8 @@ export const ResumePage = () => (
              <Heading>Additional Skills</Heading>
             <ResumeSlot dates='' bulletPoints={[
                 'Creative, obsessed with learning', 
-                'always striving for efficiency', 
-                'able to work effectively with a team as well as independently.', 
+                'Always striving for efficiency', 
+                'Able to work effectively with a team as well as independently.', 
                 'Persistent problem-solver.',
                 'Published composer and arranger of music',
 

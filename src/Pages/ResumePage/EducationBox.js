@@ -48,9 +48,9 @@ const Crest = styled.img`
     object-fit: contain;
     background-repeat: no-repeat;
 
-    position: absolute;
-    top: 110px;
-    left: 40px;
+    /* position: absolute; */
+    /* top: 110px; */
+    /* left: 40px; */
 
 `
 

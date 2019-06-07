@@ -66,8 +66,8 @@ export const ResumeSlot = ({heading, bulletPoints,dates}) => {
         </HeadingContainer>
             
             <List>
-                {bulletPoints.map(text=> (
-                    <li>{text}</li>
+                {bulletPoints.map((text,i)=> (
+                    <li key={i}>{text}</li>
                 ))}
             </List>
     </Container>

@@ -65,8 +65,8 @@ export const InternshipPage = ({name, about, image, link, bulletPoints}) => {
     <Container>
             <AppImagee text={name} image={image} link={link}/>
             <List>
-                {bulletPoints.map(text=> (
-                    <li>{text}</li>
+                {bulletPoints.map((text,i)=> (
+                    <li key={i}>{text}</li>
                 ))}
             </List>
     </Container>
@@ -82,8 +82,8 @@ font-weight: bold;
 display: flex;
 justify-content: center;
 align-items: center;
-width: 20vh;
-height: 20vh;
+width: 130px;
+height: 130px;
 
 border-radius: 30px;
 box-shadow: 1px 1px 1px #ccc;

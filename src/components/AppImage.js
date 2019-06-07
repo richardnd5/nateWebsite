@@ -10,8 +10,8 @@ font-weight: bold;
 display: flex;
 justify-content: center;
 align-items: center;
-width: 20vh;
-height: 20vh;
+width: 130px;
+height: 130px;
 
 border-radius: 30px;
 
