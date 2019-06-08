@@ -6,10 +6,11 @@ import { Row } from 'react-bootstrap'
 import {ResumeAppWithInfo} from './ResumeAppWithInfo'
 
 import MaineCrest from '../../assets/UMaine_fullcrest_logo4c.png'
-import ASULogo from '../../assets/ASULogo.png'
+// import ASULogo from '../../assets/ASULogo.png'
+import ASULogo from '../../assets/asuSVG.svg'
 import CSAImage from '../../assets/CSA.jpg'
-import sStoriesImage from '../../assets/sStoriesReduced.png'
-import moozartLogo from '../../assets/moozartLogo.png'
+import sStoriesImage from '../../assets/sStoriesReduced.jpg'
+import moozartLogo from '../../assets/moozartLogo.jpg'
 
 
 import {TechnicalSkillsSection} from './TechnicalSkillsSection'

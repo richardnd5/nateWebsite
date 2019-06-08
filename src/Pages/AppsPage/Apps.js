@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Row, Container } from 'react-bootstrap'
 import {AppImage} from '../../components/AppImage'
 import CSAImage from '../../assets/CSA.jpg'
-import sStoriesImage from '../../assets/sStoriesReduced.png'
+import sStoriesImage from '../../assets/sStoriesReduced.jpg'
 
 const Heading = styled.h1`
 padding-top: 60px;

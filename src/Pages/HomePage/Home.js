@@ -10,7 +10,7 @@ import GitHubIcon from '../../assets/GitHub-Mark-64px.png'
 import {SocialMediaIcon} from '../../components/SocialMediaIcon'
 import styled from 'styled-components'
 
-const Background = styled.div`
+const Background = styled.main`
       background: linear-gradient(#0a1c25 0, #0a1c77 100%);
 
 `

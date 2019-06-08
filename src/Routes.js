@@ -12,7 +12,6 @@ import { ResumePage } from './Pages/ResumePage/ResumePage'
 
 // Playground pages
 import ChantscriberPage from './Pages/ChantscriberPage/ChantscriberPage'
-import {ModelPage} from './Pages/ModelPage/ModelPage'
 import HomeTests from './Pages/PlayPage/HomeTests'
 import Transcribe from './Pages/PlayPage/Transcribe'
 import Playground from './Pages/PlayPage/Playground'
@@ -34,7 +33,6 @@ export const Routes = () => {
           <Route path="/arrangements" component= {Arrangements} />
           <Route path="/compositions" component= {Compositions} />
           <Route path="/ChantscriberPage" component= {ChantscriberPage} />
-          <Route path="/ModelPage" component= {ModelPage} />
           <Route component= {NoMatch} />
         </Switch>
       </Router>
