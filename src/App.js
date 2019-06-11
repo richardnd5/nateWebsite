@@ -2,7 +2,19 @@ import React, { Component, Fragment } from 'react';
 import { Routes } from './Routes'
 import { UserContext } from './UserContext'
 import {Nav, Navbar} from 'react-bootstrap';
+import { Header } from './components/Header'
+import {SocialMediaIcon} from './components/SocialMediaIcon'
+import GitHubIcon from './assets/GitHub-Mark-64px.png'
+import styled from 'styled-components'
 
+const Footer = styled.footer`
+  display: flex;
+  justify-content: center;
+  align-content: flex-end;
+  padding-bottom: 20px;
+  background: #0a1c77;
+
+`
 
 class App extends Component {
 
@@ -11,8 +23,8 @@ class App extends Component {
     return (
       <Fragment>
         <UserContext.Provider value={this.state}>
-          <Navbar variant='dark' expand="lg" fixed='top' style={{background: '#0a1c25'}}>
-            <Navbar.Toggle  bg='dark' aria-controls="basic-navbar-nav" style={{backgroundColor: '#073e96'}}/>
+          <Navbar variant='dark' expand="lg" fixed='top' style={{padding: 0}}>
+            <Navbar.Toggle  bg='dark' aria-controls="basic-navbar-nav" style={{backgroundColor: '#073e96', margin: '10px 0 0 10px'}}/>
               <Navbar.Collapse id="basic-navbar-nav" style={{backgroundColor: '#073e96'}}>
                 <Nav bg='dark' className="mr-auto" style={{backgroundColor: '#073e96'}}>
                   <Nav.Item><Nav.Link href="/">Home</Nav.Link></Nav.Item>
@@ -26,9 +38,16 @@ class App extends Component {
                 </Nav>
              </Navbar.Collapse>
         </Navbar>
-        <br/>
-        <br/>
-            <Routes/>
+
+        <Header title="N. Richard" subtitle="Musician, Developer, Educator"/>
+
+        <Routes/>
+
+        <Footer>
+          <SocialMediaIcon image={GitHubIcon} link='https://github.com/richardnd5'/>
+        </Footer>
+
+            
         </UserContext.Provider>
       </Fragment>
     );

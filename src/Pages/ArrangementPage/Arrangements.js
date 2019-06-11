@@ -1,41 +1,75 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Container, Row, Col } from 'react-bootstrap'
+
 import { VideoCell } from '../../components/VideoCell'
 import { arrangements } from './arrangementList'
-import Sticky from 'react-stickynode';
 
 
-const Styles = styled.div`
-    background: linear-gradient(#0a1c25 0, #0a1c77 100%);
-    .textAlign{
-        text-align: center;
-    }
+const Text = styled.h1`
+    padding: 30px 0 30px 0;
+    color: #eee;
+    font-family: 'Avenir';
 
-    .paddingTop{
-        padding-top: 50px;
-    }
+    font-size: 1.8em;
 
-`
-const Text = styled.div`
-color: #eee;
-font-family: 'Avenir';
-font-weight: bold;
-font-size: 2.2em;
+    height: ${props => props.divHeight || 100};
 
-height: ${props => props.divHeight || 100};
-
-display: flex;
-justify-content: center;
-align-items: center;
-z-index: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 500;
 `
 
-const Padding = styled.div`
-padding-top: 100px;
+const Container = styled.main`
+
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: linear-gradient(#0a1c25 0, #0a1c77 100%);
+
 `
+
+const Grid = styled.section`
+
+  display: grid;
+
+
+  grid-template-columns: repeat(1, 1fr);
+
+
+
+  > * {
+    margin: 10px;
+  }
+
+  height: 300px;
+  width: 300px;
+
+  @media (min-width: 500px) {
+    height: 450px;
+    width: 450px;
+  }
+
+  @media (min-width: 800px) {
+    height: 600px;
+    width: 600px;
+
+  }
+
+  @media (min-width: 1000px) {
+    height: 700px;
+    width: 700px;
+    grid-template-columns: repeat(2, 1fr);
+
+  }
+`
+
+
+
 const ArrangementCells = ({arrangements}) => (
-    <>
+    <Grid>
       { arrangements.map((arrangement,i) => (
                 <VideoCell 
                 title = {arrangement.title}
@@ -46,21 +80,12 @@ const ArrangementCells = ({arrangements}) => (
                 key={i}
                 />
       ))}
-    </>
+    </Grid>
   ); 
 
 export const Arrangements = () => (
-    <Styles>
-        <Padding/>
-            <Sticky enabled={false} top={3}>
-                <Text divHeight={100}>Arrangements</Text>
-            </Sticky>
-        <Container className='textAlign' >
-            <Row className="paddingTop" >
-                <ArrangementCells arrangements={arrangements}/>
-                <Col/>
-                <Col/>      
-            </Row>
-        </Container>        
-    </Styles>
+    <Container>
+        <Text>Arrangements</Text>
+        <ArrangementCells arrangements={arrangements}/>
+    </Container>
 )

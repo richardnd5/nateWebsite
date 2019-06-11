@@ -1,17 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Col, Nav } from 'react-bootstrap'
 
-const Container = styled.div`
+const Container = styled.a`
 
 color: #eee;
 font-family: 'Avenir';
-font-weight: bold;
+
 display: flex;
 justify-content: center;
 align-items: center;
-width: 130px;
-height: 130px;
 
 border-radius: 30px;
 
@@ -22,8 +19,6 @@ background-repeat: no-repeat;
 background-position: 55% 40%; 
 
 background-size: 100%;
-font-size: 1.5em;
-text-align: center;
 
 cursor: pointer;
 transition: 0.5s;
@@ -31,18 +26,13 @@ transition: 0.5s;
 &:hover {
     background-size: 105%;
   }
-
 `
 
 export const AppImage = (props) => {
   const { text, image, link } = props;
   return (
-      <Col className='AppContainer'>
-          <Nav.Item><Nav.Link href={link}>
-              <Container className='App' image={image}>
-                {text}
-              </Container>
-          </Nav.Link></Nav.Item>
-      </Col>
+    <Container href={link} className='App' image={image}>
+      {text}
+    </Container>
   );
 }

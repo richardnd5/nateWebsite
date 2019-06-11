@@ -46,8 +46,7 @@ const sampler = new Tone.Sampler({
     'D#7': 'Ds7.[mp3|ogg]',
     'F#7': 'Fs7.[mp3|ogg]',
     'A7': 'A7.[mp3|ogg]',
-    'C8': 'C8.[mp3|ogg]',
-    'C14': 'BackgroundD.mp3'
+    'C8': 'C8.[mp3|ogg]'
 }, {
         'release': 1,
         'baseUrl': '../salamander/'

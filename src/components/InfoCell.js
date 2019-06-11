@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Col, Nav } from 'react-bootstrap'
 
-const Container = styled.div`
+const Container = styled.a`
 
 color: #eee;
 font-family: 'Avenir';
@@ -10,18 +9,20 @@ font-weight: bold;
 display: flex;
 justify-content: center;
 align-items: center;
-width: '100%';
-height: 30vh;
+text-align: center;
 
 background-image: ${props => `url(${props.image})`};
 background-color: ${props => props.color || "#ade"};
 background-blend-mode: multiply;
 background-repeat: no-repeat;
 background-position: 55% 40%; 
-padding: 0px;
+
 
 background-size: 195%;
-font-size: 1.5em;
+/* font-size: 1.5em; */
+text-decoration: none;
+border-radius: 20px;
+box-shadow: 1px 1px 1px #111;
 
 cursor: pointer;
 transition: 0.3s;
@@ -32,39 +33,22 @@ transition: 0.3s;
 
   }
 
-@media (min-width: 700px) {
+/* @media (min-width: 700px) {
   height: 30vh;
 
   &:hover {
     background-color: rgba(12, 12, 63, 0.7);
     background-size: 205%;
   }
-}
-`
-
-const Styles = styled.div`
-.container{
-
-}
+} */
 `
 
 export const InfoCell = (props) => {
 
   const { text, color, image, link } = props;
   return (
-
-
-    <Col nogutters="true" xs={6} style={{ 'backgroundColor': '#333' }}>
-      <Styles>
-        <Nav.Item><Nav.Link style={{ 'color': '#eee', 'width': '100%', 'height': '100%', 'padding': 0 }} href={link}>
-          <Container color={color} image={image}>
+          <Container href={link} color={color} image={image}>
             {text}
           </Container>
-        </Nav.Link></Nav.Item>
-      </Styles>
-    </Col>
-
-
-
   );
 }

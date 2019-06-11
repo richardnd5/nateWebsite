@@ -1,88 +1,66 @@
 import React from 'react'
 import styled from 'styled-components'
 import YouTube from 'react-youtube'
-import {Col} from 'react-bootstrap'
 import ReactPlayer from 'react-player'
 
-/*
-Usage. Import by destructuring. Provide these props
-    title = string, 
-    subtitle = string, 
-    videoId = (Youtube Id || vimeo url), 
-    isVimeo = bool, 
-    color = (hex, rgba, or colorName)
-*/
 
-const Container = styled.div`
-    background-color:${props => props.color || "none"};
+const Container = styled.article`
+    background-color: #1a3149;
     border-radius: 30px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    color: #c4d3d1;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
-    @media (min-width: 768px) {
-        height: 400px;
-    }
 `
 
 const Title = styled.h1`
-padding: ${props => props.padding || "10px"};
-display: flex;
-justify-content: center;
-align-items: center;
-font-size: 30px;
-color: #c4d3d1;
-height: 80px;
+    margin: 20px;
+
 `
 
 const SubTitle = styled.h6`
-padding: ${props => props.padding || "10px"};
-font-size: 14px;
-color: #c4d3d1;
+    margin: 20px;
 `
 
-const Padding = styled.div`
-padding: ${props => props.amount || "10px"};
-display: flex;
-align-items: center;
-justify-content: center;
+const VideoContainer = styled.div`
+    margin: 20px;
 `
+
 export const VideoCell = (props) => {
-    const { title, subtitle, videoId, isVimeo, color } = props;
+    const { title, subtitle, videoId, isVimeo } = props;
     return(
+        <Container>
+            <Title>{title}</Title>
+            <SubTitle>{subtitle}</SubTitle>
 
-        <Col xs={12} md={6} xl={4}>
-        <>
-                <Container color ={color}>
-                <Title padding='10px'>
-                        {title}
-                </Title>
-                <SubTitle padding='5px'>{subtitle}</SubTitle>
+            <VideoContainer>
 
-                {isVimeo ? (
+            {isVimeo ? (
 
-                    <Padding amount='25px 0 25px 0px' className='centerHorizontally'>
-                    <ReactPlayer 
-                    url={videoId} 
-                    width='250px' 
-                    height='160px'
+
+                <ReactPlayer 
+                url={videoId} 
+                width='250px' 
+                height='160px'
+                />
+
+            ) : (
+
+                <YouTube
+                    videoId={videoId}
+                    opts={{
+                    width: '250',
+                    height: '160',
+                    }}
                     />
-                    </Padding>
-                ) : (
-                    <Padding amount='25px 0 25px 0px'>
-                    <YouTube
-                        videoId={videoId}
-                        opts={{
-                        width: '250',
-                        height: '160',
-                        }}
-                        />
-                    </Padding>
+            )}
+            </VideoContainer>
+        </Container>
 
-                )}
-                </Container>
 
-        </>
-    </Col>
+
 )
 }
