@@ -1,12 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import {EducationBox} from './EducationBox'
-import { Row } from 'react-bootstrap'
 
 import {ResumeAppWithInfo} from './ResumeAppWithInfo'
 
 import MaineCrest from '../../assets/UMaine_fullcrest_logo4c.png'
-// import ASULogo from '../../assets/ASULogo.png'
 import ASULogo from '../../assets/asuSVG.svg'
 import CSAImage from '../../assets/CSA.jpg'
 import sStoriesImage from '../../assets/sStoriesReduced.jpg'
@@ -18,70 +16,82 @@ import {InternshipPage} from './InternshipPage'
 import {ResumeSlot} from './ResumeSlot'
 
 
-const Wrapper = styled.div`
+const Wrapper = styled.main`
     display: flex;
     align-items: center;
     flex-direction: column;
     padding-top: 20px;
     background-color: #eeeeed;
-    font-family: 'Avenir';
-    
+    font-family: 'Avenir';  
 `
 
-const Title = styled.h2`
-    font-size: 2em;
-    color: #0e289b;
-
+const Section = styled.section`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
 
-const Heading = styled.h5`
+const Heading = styled.h1`
     padding-top: 20px;
     font-size: 1.5em;
     color: #0e289b;
     text-align: center;
 `
-const Subheading = styled.div`
-font-size: 0.9em;
-text-align: center;
+const Subheading = styled.p`
+    font-size: 0.9em;
+    text-align: center;
 
 `
 
+const EducationContainer = styled.section`
+    padding-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 10px;
 
+    > * {
+    margin: 10px;
+    }
 
+    @media (min-width: 800px) {
+    grid-template-columns: repeat(2, 1fr);
+    }
+
+`
 
 export const ResumePage = () => (
     <Wrapper>
-        <Title>Nathan Richard</Title>
-        <Heading>Objective</Heading>
-        <Subheading>Budding mobile and web engineer seeking employment as a software developer</Subheading>
+        <Section>
+            <Heading>Objective</Heading>
+            <Subheading>Budding mobile and web engineer seeking employment as a software developer</Subheading>
+        </Section>
+
+        <Section>
         <Heading>Education</Heading>
+            <EducationContainer>
+                <EducationBox 
+                    school='Arizona State University' 
+                    degree='Master of Music Composition' 
+                    year='2012' 
+                    gpa='3.96'
+                    schoolColor1='#8c1d3f'
+                    schoolColor2='#ffc627'
+                    icon={ASULogo}
+                />
 
+                <EducationBox 
+                    school='University of Maine' 
+                    degree='Bachelor of Music Education' 
+                    year='2009' 
+                    gpa='3.78'
+                    schoolColor1='#002b5c'
+                    schoolColor2='#7abbe7'
+                    icon={MaineCrest}
+                />
+            </EducationContainer>
+        </Section>
 
-            <Row className="justify-content-md-center" style={{width: '70%'}}>
-            <EducationBox 
-                school='Arizona State University' 
-                degree='Master of Music Composition' 
-                year='2012' 
-                gpa='3.96'
-                schoolColor1='#8c1d3f'
-                schoolColor2='#ffc627'
-                icon={ASULogo}
-                
-            />
-
-            <EducationBox 
-                school='University of Maine' 
-                degree='Bachelor of Music Education' 
-                year='2009' 
-                gpa='3.78'
-                schoolColor1='#002b5c'
-                schoolColor2='#7abbe7'
-                icon={MaineCrest}
-
-            />
-            </Row>
-
-
+        <Section>
             <Heading>Published Apps</Heading>
 
             <ResumeAppWithInfo 
@@ -107,14 +117,15 @@ export const ResumePage = () => (
                     'Basic persistent storage using UserDefaults'
                     ]} 
             />
+        </Section>
 
+        <Section>
             <Heading>Technical Skills</Heading>
 
                 <TechnicalSkillsSection heading='iOS' years={5} bulletPoints={[
                     'Build and deploy iOS applications (Swift)',
                     'UIKit, Autolayout, programmatic and storyboard)', 
                     'In-App Purchases', 'Testflight', 'CocoaPods', 'SpriteKit', 'AudioKit', 'subclassing', 'delegate protocols', 'written reusable extensions'
-                    
                 ]}/>
                 <TechnicalSkillsSection heading='Web' years={4} bulletPoints={[
                     'Built personal website in Javascript (Some Typescript) and React (React Router, React Context, styled components)',
@@ -123,16 +134,14 @@ export const ResumePage = () => (
                     'Bootstrap, CSS Flexbox',
                     'Node, Yarn and NPM',
                     'GitHub, committing, multiple branches'
-                    
-                    
                 ]}/>
                 <TechnicalSkillsSection heading='Script/Automation' years={4} bulletPoints={[
                     'Music harmonizer - automatically harmonizes melody lines based on functional tertian harmony (Typescript, Max MSP)',
-                    'sfz file generator - (sfz - plain text file format that stores instrument data for software synthesizers)   (JS)'
-                    
-                    
-                ]}/>
+                    'sfz file generator - (sfz - plain text file format that stores instrument data for software synthesizers)   (JS)'     
+            ]}/>
+         </Section>
 
+            <Section>
                 <Heading>iOS Internship</Heading>
                 <InternshipPage 
                 name= "Meltmedia - Tempe, AZ"
@@ -147,65 +156,68 @@ export const ResumePage = () => (
                     'Fixed several issues that could cause the application to crash',
                     'Updated for iOS 7 and iOS 8 compatibility'
                     ]} 
-            />
+                />
+            </Section>
+            <Section>
+                <Heading>Recent Work Experience</Heading>
+                <ResumeSlot heading='Chaparral High School Choir and Orchestra Director' dates='2015-2018' bulletPoints={[
+                    'Ran a program of 60-100 students', 
+                    'Taught multiple courses. Designed curriculums', 
+                    'Held public performances around the country', 
+                    'Managed financial accounts', 
+                    'Organized multiple events', 
+                    'Received top ratings at competitions', 
+                    'Arranged and composed music the majority of the repertoire', 
+                    'coordinated trips to NYC, California, and around Arizona',
+                    'Organized and ran parent booster organization',
+                    'Organized and ran student council',
+                    'Collaborated and performed with Nashville band with half a million monthly listeners on Spotify'
+                    ]}/>
+                                
+                <ResumeSlot heading='Audio Engineering Experience' dates='15 years' bulletPoints={[
 
-            <Heading>Recent Work Experience</Heading>
-            <ResumeSlot heading='Chaparral High School Choir and Orchestra Director' dates='2015-2018' bulletPoints={[
-
-                'Ran a program of 60-100 students', 
-                'Taught multiple courses. Designed curriculums', 
-                'Held public performances around the country', 
-                'Managed financial accounts', 
-                'Organized multiple events', 
-                'Received top ratings at competitions', 
-                'Arranged and composed music the majority of the repertoire', 
-                'coordinated trips to NYC, California, and around Arizona',
-                'Organized and ran parent booster organization',
-                'Organized and ran student council',
-                'Collaborated and performed with Nashville band with half a million monthly listeners on Spotify'
+                    'Software - Ableton, Logic Pro, Pro Tools, Garageband, Absynth, Melodyne, Finale, Sibelius',
+                    'Created audio assets for published apps',
+                    'Recorded/edited professional singers, pianist on numerous recordings',
+                    'Created practice tracks for all level ensembles, community through Grammy award winning choirs',
+                    'Ran sound system for a cappella ensembles, live digital audio processing with ensemble members controlling effects from a hardware hacked Wii remote.'
                 ]}/>
-                            
-            <ResumeSlot heading='Audio Engineering Experience' dates='15 years' bulletPoints={[
+            </Section>
 
-                'Software - Ableton, Logic Pro, Pro Tools, Garageband, Absynth, Melodyne, Finale, Sibelius',
-                'Created audio assets for published apps',
-                'Recorded/edited professional singers, pianist on numerous recordings',
-                'Created practice tracks for all level ensembles, community through Grammy award winning choirs',
-                'Ran sound system for a cappella ensembles, live digital audio processing with ensemble members controlling effects from a hardware hacked Wii remote.'
-             ]}/>
+            <Section>
+                <Heading>Recent Compensated Keyboard Work</Heading>
 
-            <Heading>Recent Compensated Keyboard Work</Heading>
+                <ResumeSlot heading='Mission Bell United Methodist Church Pianist' dates='2018 - present' bulletPoints={[
+                    'Provide piano music for services, events, and rehearsals',
+                    'Arrange music to suit the needs of the ensemble',
+                    'Write piano accompaniments for service music',
+                    'AV tech consultant for updating sanctuary equipment'
+                    
+                ]}/>
+                <ResumeSlot heading='Gilbert Youth Choir Accompanist' dates='2013 - present' bulletPoints={[
+                    'Accompany ensembles in rehearsal and concerts',
+                    'Create practice tracks for all ensembles',
+                    'Arrange music to suit the needs for the ensemble'
 
-            <ResumeSlot heading='Mission Bell United Methodist Church Pianist' dates='2018 - present' bulletPoints={[
-                'Provide piano music for services, events, and rehearsals',
-                'Arrange music to suit the needs of the ensemble',
-                'Write piano accompaniments for service music',
-                'AV tech consultant for updating sanctuary equipment'
-                
-             ]}/>
-            <ResumeSlot heading='Gilbert Youth Choir Accompanist' dates='2013 - present' bulletPoints={[
-                'Accompany ensembles in rehearsal and concerts',
-                'Create practice tracks for all ensembles',
-                'Arrange music to suit the needs for the ensemble'
-
-                
-             ]}/>
-            <ResumeSlot heading='ASU Newman Center Service Pianist and Vocalist' dates='2010 - present' bulletPoints={[
-                'Accompany singers every Saturday in a blended service (contemporary and traditional music)',
-                'Creating improvised accompaniments from chord charts',
-                'Creating and singing vocal harmonies on repertoire',
-                'Writing and arranging antiphons for every service. Music utilized in the diocese of Boise, ID'               
-             ]}/>
-             <Heading>Additional Skills</Heading>
-            <ResumeSlot dates='' bulletPoints={[
-                'Creative, obsessed with learning', 
-                'Always striving for efficiency', 
-                'Able to work effectively with a team as well as independently.', 
-                'Persistent problem-solver.',
-                'Published composer and arranger of music',
-
-
-             ]}/>
+                    
+                ]}/>
+                <ResumeSlot heading='ASU Newman Center Service Pianist and Vocalist' dates='2010 - present' bulletPoints={[
+                    'Accompany singers every Saturday in a blended service (contemporary and traditional music)',
+                    'Creating improvised accompaniments from chord charts',
+                    'Creating and singing vocal harmonies on repertoire',
+                    'Writing and arranging antiphons for every service. Music utilized in the diocese of Boise, ID'               
+                ]}/>
+             </Section>
+             <Section>
+                <Heading>Additional Skills</Heading>
+                    <ResumeSlot dates='' bulletPoints={[
+                        'Creative, obsessed with learning', 
+                        'Always striving for efficiency', 
+                        'Able to work effectively with a team as well as independently.', 
+                        'Persistent problem-solver.',
+                        'Published composer and arranger of music',
+                    ]}/>
+             </Section>
 
     </Wrapper>
 )

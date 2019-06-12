@@ -29,39 +29,39 @@ const Container = styled.main`
       flex-direction: column;
       background: linear-gradient(#0a1c25 0, #0a1c77 100%);
 
+
 `
 
 const Grid = styled.section`
 
   display: grid;
 
-
   grid-template-columns: repeat(1, 1fr);
-
-
 
   > * {
     margin: 10px;
   }
 
-  height: 300px;
-  width: 300px;
-
   @media (min-width: 500px) {
-    height: 450px;
-    width: 450px;
+
+    grid-template-columns: repeat(1, 1fr);
   }
 
   @media (min-width: 800px) {
-    height: 600px;
-    width: 600px;
+    grid-template-columns: repeat(3, 1fr);
+
+    /* height: 600px;
+    width: 600px; */
+
 
   }
 
   @media (min-width: 1000px) {
-    height: 700px;
-    width: 700px;
-    grid-template-columns: repeat(2, 1fr);
+    /* height: 700px;
+    width: 700px; */
+    grid-template-columns: repeat(4, 1fr);
+
+
 
   }
 `

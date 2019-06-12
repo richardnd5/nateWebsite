@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 
-const Container = styled.div`
+const Container = styled.article`
 
     width: 90%;
     display: flex;
@@ -34,7 +34,7 @@ const Container = styled.div`
 `
 
 
-const HeadingContainer = styled.div`
+const HeadingContainer = styled.section`
 
     color: #0e289b;
     padding: 10px;
@@ -49,10 +49,10 @@ const HeadingContainer = styled.div`
     }
 `
 
-const Heading = styled.div`
+const Heading = styled.h1`
     font-size: 1.2em;
 `
-const Subheading = styled.div`
+const Subheading = styled.h2`
     font-size: 0.7em;
 `
 

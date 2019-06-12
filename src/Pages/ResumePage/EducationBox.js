@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import {Col} from 'react-bootstrap'
 
-const Container = styled.div`
+const Container = styled.article`
     color: white;
 
     border-radius: 20px;
@@ -16,46 +15,32 @@ const Container = styled.div`
     height: 100%;
 
     box-shadow: 1px 1px 1px #ccc;
-
-
-    
-
 `
 
-const SchoolTitle = styled.div`
+const SchoolTitle = styled.h1`
   font-weight: bold;
   font-size: 1.2em;
-  /* text-align: center; */
-
-
 `
-const Degree = styled.div`
-
-
+const Degree = styled.h2`
+  font-size: 0.8em;
 `
-const Year = styled.div`
-
+const Year = styled.h3`
+    font-size: 0.8em;
 `
-const  GPA = styled.div`
-
+const  GPA = styled.h4`
+    font-size: 0.8em;
 `
 
 const Crest = styled.img`
 
     background-image: ${props => `url(${props.icon})`};
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     object-fit: contain;
     background-repeat: no-repeat;
-
-    /* position: absolute; */
-    /* top: 110px; */
-    /* left: 40px; */
-
 `
 
 export const EducationBox = ({school, degree, year, schoolColor1, schoolColor2, gpa, icon }) => (
-    <Col md= 'auto' style={{padding: 20}}>
     <Container style={{background: `linear-gradient(${schoolColor1} 0, ${schoolColor2} 100%)`}}>
         <SchoolTitle>{school}</SchoolTitle>
         <Degree>{degree}</Degree>
@@ -63,5 +48,5 @@ export const EducationBox = ({school, degree, year, schoolColor1, schoolColor2, 
         <GPA>{gpa} GPA</GPA>
         <Crest src={icon}/>
     </Container>
-    </Col>
+
 )

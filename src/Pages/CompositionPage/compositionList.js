@@ -1,4 +1,4 @@
-export const compositionList = [
+export const compositions = [
     {
         title :  'Nunc dimittis' ,
         subtitle: "Performed by Solis Camerata" ,
@@ -15,6 +15,12 @@ export const compositionList = [
         title :  'A Father and His Child' ,
         subtitle: "Performed by Euphony" ,
         videoId: "JMQlNYs5ORM",
+        color: "#1a3149",
+    },
+    {
+        title :  'String Quartet' ,
+        subtitle: "Performed by ASU" ,
+        videoId: "C2hdndiszQ8",
         color: "#1a3149",
     },
 ]

@@ -1,5 +1,5 @@
 import React from 'react'
-import {InfoCell} from '../../components/InfoCell'
+import {InfoCell} from './InfoCell'
 import AboutImage from '../../assets/AboutImage.jpg'
 import AppsImage from '../../assets/AppsImage.png'
 import ArrangementsImage from '../../assets/ArrangementsImage.jpg'
@@ -51,10 +51,10 @@ const Container = styled.section`
 export const Home = () => (
   <Background>
     <Container>
-      <InfoCell height={200} text='About' color='rgba(12, 12, 63, 1.0)' image={AboutImage} link='/about'/>
-      <InfoCell height={200} text='Apps' color='rgba(46, 204, 113,1.0)' image={AppsImage} link='/apps'/>
-      <InfoCell height={200} text='Arrangements' color='rgba(241, 196, 15,1.0)' image={ArrangementsImage} link='/arrangements'/>
-      <InfoCell height={200} text='Compositions' color='rgba(231, 76, 60,1.0)' image={CompositionsImage} link='/compositions'/>
+      <InfoCell text='About' color='rgba(12, 12, 63, 1.0)' image={AboutImage} link='/about'/>
+      <InfoCell text='Apps' color='rgba(46, 204, 113,1.0)' image={AppsImage} link='/apps'/>
+      <InfoCell text='Arrangements' color='rgba(241, 196, 15,1.0)' image={ArrangementsImage} link='/arrangements'/>
+      <InfoCell text='Compositions' color='rgba(231, 76, 60,1.0)' image={CompositionsImage} link='/compositions'/>
     </Container>
   </Background>
 )

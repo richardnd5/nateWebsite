@@ -11,8 +11,10 @@ const Footer = styled.footer`
   display: flex;
   justify-content: center;
   align-content: flex-end;
+  align-items: center;
   padding-bottom: 20px;
-  background: #0a1c77;
+  padding-top: 20px;
+  /* background: #0a1c77; */
 
 `
 
@@ -44,7 +46,7 @@ class App extends Component {
         <Routes/>
 
         <Footer>
-          <SocialMediaIcon image={GitHubIcon} link='https://github.com/richardnd5'/>
+          <SocialMediaIcon image={GitHubIcon} link='https://github.com/richardnd5/nateWebsite'/>
         </Footer>
 
             

@@ -14,7 +14,7 @@ import { createNoteObjectArray } from '../../backendJS/StringToNoteObjectTypes';
 
 // import {NoteScroll} from './NoteScroll'
 
-const Container = styled.div`
+const Container = styled.main`
     justify-content: center;
     -moz-align-items: center;
     -webkit-align-items: center;
@@ -36,13 +36,13 @@ const Container = styled.div`
 
 `
 
-const Title = styled.div`
+const Title = styled.h1`
     font-size:1.5em;
 `
 
 const CustomSlider = styled.input``
 
-const BigButton = styled.div`
+const BigButton = styled.button`
     background-image: linear-gradient(0deg, #000, #555);
     border: none;
     color: #ccc;
@@ -179,7 +179,7 @@ export default class SequencerPage extends Component {
 
         const {noteObjects, xml} = this.state
         return (
-            <div>
+            <main>
 
 
             <Container>
@@ -188,49 +188,49 @@ export default class SequencerPage extends Component {
                 <form onSubmit={this.handleSubmit} >
                     <label>Type in a Melody</label><br />
                     <label>(Scroll Down To See Key)</label>
-                    <br />
-                    {/* <input type="text" onChange={this.handleTextAreaChange} onKeyPress={this.handleSubmit} placeholder={this.state.noteString} name="q" spellCheck="off" style={{ color: "black", width: "50vw", height: 100, textAlign: "center" }} /> */}
                     <TextArea onChange={this.handleTextAreaChange} value={this.state.noteString} placeholder={this.state.noteString} spellCheck="off" wrap="hard"/>
                 </form>
-                <br />
+
 
                 <button onClick={this.setMelody}>Or Generate a Melody</button>
-                <br/>
-                {/* <button onClick={makingMelodyAgain}>Generate Random Number</button> */}
                 
-                <h5>Key</h5>
-                <select value={this.state.keyString} onChange={this.handleKeySelect}>
-                <option value="C">C</option>
-                <option value="C#">C#/Db</option>
-                <option value="D">D</option>
-                <option value="D#">D#/Eb</option>
-                <option value="E">E</option>
-                <option value="F">F</option>
-                <option value="F#">F#/Gb</option>
-                <option value="G">G</option>
-                <option value="G#">G#/Ab</option>
-                <option value="A">A</option>
-                <option value="A#">A#/Bb</option>
-                <option value="B">B</option>
-                </select>
+                <section>
+                    <h5>Key</h5>
+                    <select value={this.state.keyString} onChange={this.handleKeySelect}>
+                    <option value="C">C</option>
+                    <option value="C#">C#/Db</option>
+                    <option value="D">D</option>
+                    <option value="D#">D#/Eb</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="F#">F#/Gb</option>
+                    <option value="G">G</option>
+                    <option value="G#">G#/Ab</option>
+                    <option value="A">A</option>
+                    <option value="A#">A#/Bb</option>
+                    <option value="B">B</option>
+                    </select>
+                </section>
 
-                <br/>
 
+                <section>
                 <h5>Mode</h5>
-                <select value={this.state.modeString} onChange={this.handleModeSelect}>
-                <option value='ionian'>Ionian</option>
-                <option value='dorian'>Dorian</option>
-                <option value= 'phrygian'>Phrygian</option>
-                <option value='lydian'>Lydian</option>
-                <option value= 'mixolydian'>Mixolydian</option>
-                <option value='aeolian'>Aeolian</option>
-                <option value='locrian'>Locrian</option>
-                </select>
+                    <select value={this.state.modeString} onChange={this.handleModeSelect}>
+                    <option value='ionian'>Ionian</option>
+                    <option value='dorian'>Dorian</option>
+                    <option value= 'phrygian'>Phrygian</option>
+                    <option value='lydian'>Lydian</option>
+                    <option value= 'mixolydian'>Mixolydian</option>
+                    <option value='aeolian'>Aeolian</option>
+                    <option value='locrian'>Locrian</option>
+                    </select>
+                </section>
 
-                <br/>
+
                 <h5>Harmonized? (no ^7)</h5>
                 <input type="checkbox" value={this.state.harmonyChecked} onChange={this.handleHarmonyChecked} />                <br/>
                 <h5>Tempo: {this.state.tempo}</h5>
+
                 <CustomSlider
                     id="typeinp"
                     type="range"
@@ -241,7 +241,7 @@ export default class SequencerPage extends Component {
                 <BigButton onClick={this.handlePlayToggle} >
                     {this.state.toggleOn ? 'Play' : 'Stop'}
                 </BigButton>
-                <div style={{ textAlign: "center" }}>
+                <article style={{ textAlign: "center" }}>
                     <p>Every character is a "tick" in time. </p><br />
                     <p>number = scale degree</p><br />
                     <p>, = make previous note an octave down</p><br />
@@ -251,17 +251,17 @@ export default class SequencerPage extends Component {
                     <p>; = hold previous note for one tick</p><br />
                     <p>, = rest for one tick</p><br />
                     
-                </div>
+                </article>
 
             </Container>
-                <br/>
+
                 
 
-                <div>This part of the page is still under construction</div>
+                <p>This part of the page is still under construction</p>
                 <MelodyGeneratorView noteObjects={noteObjects}/>
                 <SheetMusicPage xml={xml}/>
-            <button onClick={this.createNoteObjectsFromString}>Create Sheet Music</button>
-                </div>
+                <button onClick={this.createNoteObjectsFromString}>Create Sheet Music</button>
+        </main>
 
                 
         )

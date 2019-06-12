@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const Container = styled.header`
   display: flex;
-  height: 20vh;
+  /* height: 20vh; */
   flex-direction: column;
   justify-content: center;
   align-content: center;

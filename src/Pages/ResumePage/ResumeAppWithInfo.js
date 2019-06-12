@@ -1,9 +1,8 @@
 import React from 'react'
-import { Nav } from 'react-bootstrap'
 import styled from 'styled-components'
 
 
-const Container = styled.div`
+const Container = styled.article`
 display: flex;
 flex-direction: row;
 width: 90%;
@@ -55,7 +54,7 @@ export const ResumeAppWithInfo = ({name, image, link, bulletPoints}) => {
 
 )}
 
-const AppContainer = styled.div`
+const A = styled.a`
 
 color: #eee;
 font-family: 'Avenir';
@@ -91,12 +90,10 @@ transition: 0.5s;
 export const AppImagee = (props) => {
   const { text, image, link } = props;
   return (
-
-          <Nav.Item><Nav.Link href={link}>
-              <AppContainer className='App' image={image}>
+              <A href={link} className='App' image={image}>
                 {text}
-              </AppContainer>
-          </Nav.Link></Nav.Item>
+              </A>
+
 
   );
 }

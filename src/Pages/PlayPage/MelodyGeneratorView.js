@@ -4,7 +4,7 @@ import {NoteCell} from './NoteCell'
 
 const rows = 8
 
-const Overflow = styled.div`
+const Overflow = styled.section`
     /* height: 70vh; */
     /* width: 100vw; */
     /* overflow: auto; */

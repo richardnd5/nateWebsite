@@ -3,7 +3,7 @@ import OpenSheetMusicDisplay from '../../lib/OpenSheetMusicDisplay'
 import styled from 'styled-components'
 
 
-const Container = styled.div`
+const Container = styled.section`
   background-color: #eee;
 `
 
