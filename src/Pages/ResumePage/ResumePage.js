@@ -43,7 +43,7 @@ const Subheading = styled.p`
 
 `
 
-const EducationContainer = styled.section`
+const EducationContainer = styled.div`
     padding-bottom: 20px;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
