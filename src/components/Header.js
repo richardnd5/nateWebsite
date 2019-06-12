@@ -4,13 +4,12 @@ import styled from 'styled-components'
 
 const Container = styled.header`
   display: flex;
-  /* height: 20vh; */
   flex-direction: column;
   justify-content: center;
   align-content: center;
   text-align: center;
   padding-bottom: 20px;
-  padding-top: 140px;
+  padding-top: 80px;
 `
 
 const Title = styled.h1`

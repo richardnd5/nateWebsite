@@ -74,7 +74,7 @@ background-blend-mode: multiply;
 background-repeat: no-repeat;
 background-position: 55% 40%; 
 
-background-size: 100%;
+background-size: 110%;
 font-size: 1.5em;
 text-align: center;
 

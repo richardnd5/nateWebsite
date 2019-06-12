@@ -14,7 +14,7 @@ const Footer = styled.footer`
   align-items: center;
   padding-bottom: 20px;
   padding-top: 20px;
-  /* background: #0a1c77; */
+  background: #0a1c77;
 
 `
 

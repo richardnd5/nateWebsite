@@ -2,13 +2,11 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Modes, Key } from '../../backendJS/MusicConstants'
 import { playAllNotes, stopSequencer } from './WebAudio' //has to be imported before sampler
-import {SheetMusicPage} from './SheetMusicPage'
+// import {SheetMusicPage} from './SheetMusicPage'
 import { generateXMLFromNoteObject } from '../../backendJS/MusicXMLTypes'
-// import {add} from '../../backendJS/MusicXMLTypes'
-// import {testing} from '../../backendJS/MusicConstantTypes'
 import {makingMelodyAgain} from './MelodyGenerator'
-// import { write } from 'fs';
- import {MelodyGeneratorView} from './MelodyGeneratorView'
+
+//  import {MelodyGeneratorView} from './MelodyGeneratorView'
 import { createNoteObjectArray } from '../../backendJS/StringToNoteObjectTypes';
 
 
@@ -177,7 +175,7 @@ export default class SequencerPage extends Component {
 
     render() {
 
-        const {noteObjects, xml} = this.state
+        // const {noteObjects, xml} = this.state
         return (
             <main>
 
@@ -250,17 +248,14 @@ export default class SequencerPage extends Component {
                     <p># = sharp the following note</p><br />
                     <p>; = hold previous note for one tick</p><br />
                     <p>, = rest for one tick</p><br />
-                    
                 </article>
 
             </Container>
-
-                
-
+            {/*                 
                 <p>This part of the page is still under construction</p>
                 <MelodyGeneratorView noteObjects={noteObjects}/>
                 <SheetMusicPage xml={xml}/>
-                <button onClick={this.createNoteObjectsFromString}>Create Sheet Music</button>
+                <button onClick={this.createNoteObjectsFromString}>Create Sheet Music</button> */}
         </main>
 
                 

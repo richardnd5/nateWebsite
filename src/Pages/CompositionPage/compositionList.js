@@ -19,7 +19,7 @@ export const compositions = [
     },
     {
         title :  'String Quartet' ,
-        subtitle: "Performed by ASU" ,
+        subtitle: "Performed by ASU Chamber Strings Ensemble Project" ,
         videoId: "C2hdndiszQ8",
         color: "#1a3149",
     },
