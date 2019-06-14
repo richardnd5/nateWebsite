@@ -74,8 +74,8 @@ export const VideoCell = (props) => {
 
             <IFrame 
               frameborder="0" 
-              allowfullscreen="1" 
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" 
               title="YouTube video player" 
               src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1&amp;origin=http%3A%2F%2Flocalhost%3A3000&amp;widgetid=1" id="widget2`}
              />

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import {VimeoView} from './VimeoView'
 
 const Container = styled.main`
 
@@ -15,7 +16,7 @@ const Container = styled.main`
     align-content: center;
     flex-direction: column;
 
-    padding-top: 150px;
+    /* padding-top: 150px; */
     
 
 `
@@ -89,6 +90,13 @@ const Form = styled.form`
 
 `
 
+const Wrapper = styled.div`
+width: '100%';
+
+`
+
+
+
 const storyLine = [
     'Hello',
     'I have had so many experiences',
@@ -140,6 +148,10 @@ export default class TextBasedAdventure extends Component {
 
         return (
             <Container>
+
+
+                <VimeoView vimeoID='342190245'/>
+
                 <Question>{this.state.question}</Question>
                 <Button onClick={this.handleNext}>Next</Button>
                 <Form onSubmit={this.handleSubmit} >
