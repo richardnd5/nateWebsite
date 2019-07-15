@@ -185,11 +185,11 @@ export default class SequencerPage extends Component {
                 <Title>Simple Melody Maker</Title>
                 <form onSubmit={this.handleSubmit} >
                     <label>Type in a Melody</label><br />
-                    <label>(Scroll Down To See Key)</label>
                     <TextArea onChange={this.handleTextAreaChange} value={this.state.noteString} placeholder={this.state.noteString} spellCheck="off" wrap="hard"/>
                 </form>
 
 
+                <label>(Scroll Down To See Key)</label>
                 <button onClick={this.setMelody}>Or Generate a Melody</button>
                 
                 <section>
