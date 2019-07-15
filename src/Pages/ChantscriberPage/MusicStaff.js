@@ -30,7 +30,6 @@ const Dot = styled.div`
 
 export const MusicStaff = () => (
     <Container>
-
         <Line/>
         <Line line={true}/>
         <Line/>

@@ -1,4 +1,4 @@
-const noteLetters = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+export const noteLetters = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
 
 export const pitches = []
 
@@ -79,6 +79,8 @@ export const KeySignaturesFromMidiNote = {
     71: 5,
 }
 
+
+
 export function allPossibleDiatonicNotes(key, mode){
     let array = []
 
@@ -125,7 +127,9 @@ export function allPossibleTriadicHarmonyNotes(key, mode){
 export const NoteTypes = {
     WHOLE: {name:'whole', duration: 16},
     HALF: {name:'half', duration: 8},
+    DOTTEDQUARTER: {name: 'dottedQuarter', duration: 6},
     QUARTER: {name: 'quarter', duration: 4},
+    DOTTEDEIGHTH: {name: 'dottedEighth', duration: 3},
     EIGHTH: {name: 'eighth', duration: 2},
     SIXTEENTH: {name: '16th', duration: 1},
     THIRTYSECOND: {name: '32nd', duration: 1},

@@ -14,7 +14,7 @@ class OpenSheetMusicDisplay extends Component {
         autoResize: this.props.autoResize ? this.props.autoResize : true,
         drawTitle: this.props.drawTitle ? this.props.drawTitle : true,
         disableCursor: false,
-        defaultColorNotehead: "blue", // try setting a default color. default is black (undefined)
+        defaultColorNotehead: "black", // try setting a default color. default is black (undefined)
 
       }
       this.osmd = new OSMD(this.divRef.current, options);

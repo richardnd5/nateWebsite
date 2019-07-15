@@ -1,16 +1,3 @@
-function removeWhiteSpaceFromString(string){
-    return string
-    .replace(/-/g, '- ') // replace hyphens with hyphen space
-    .replace(/\s{2,}/g, ' ') // replace multiple whitespaces with single space
-    .replace(/(\r\n|\n|\r)/gm," ") // replace carriage returns with space
-    .trim() // removes whitespace at beginning and end
-}
-
-function splitStringToArrayByWhiteSpace(string){
-    let cleanedString = removeWhiteSpaceFromString(string)
-    let array = cleanedString.split(" ")
-    return array
-}
 
 export function createLyricObjects(string){
 
@@ -27,4 +14,20 @@ export function createLyricObjects(string){
     });
 
     return lyricObjects
+}
+
+// HELPER FUNCTIONS
+
+function splitStringToArrayByWhiteSpace(string){
+    let cleanedString = removeWhiteSpaceFromString(string)
+    let array = cleanedString.split(" ")
+    return array
+}
+
+function removeWhiteSpaceFromString(string){
+    return string
+    .replace(/-/g, '- ') // replace hyphens with hyphen space
+    .replace(/\s{2,}/g, ' ') // replace multiple whitespaces with single space
+    .replace(/(\r\n|\n|\r)/gm," ") // replace carriage returns with space
+    .trim() // removes whitespace at beginning and end
 }

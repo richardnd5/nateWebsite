@@ -1,18 +1,81 @@
-import {NoteTypes, KeySignatures, accidental} from './MusicConstants'
+import {NoteTypes, accidental} from './MusicConstants'
 import { createNoteObjectArray} from './StringToNoteObjectTypes'
 import { pitches, allPossibleTriadicHarmonyNotes, KeySignaturesFromMidiNote, slurType, Lyric, SyllabicType } from './MusicConstants'
-// import { Note } from 'opensheetmusicdisplay/build/dist/src';
 
-interface Note {
-    letterName: string,
-    octave: number,
-    type: string,
-    duration: number,
-    dot: Boolean,
-    syllable: string,
 
+
+export const Noodle : string = "Noodle"
+
+interface KeySignature {
+    name: string;
+    fifths: number;
+}
+
+const C = {name: "C", fifths: 0}
+
+interface Attributes {
+    division: number,
 
 }
+
+
+
+const KeySignatures = {
+    "C": 0,
+    "Cs": 7,
+    "D": 2,
+    "E": 4,
+    "F": -1,
+    "Fs": 6,
+    "G": 1,
+    "A": 3,
+    "B": 5,
+    "Db": -5,
+    "Eb": -3,
+    "Gb": -6,
+    "Ab": -4,
+    "Bb": -2,
+    "C#": 7,
+    "F#": 6,
+}
+
+
+
+const createAttributes = () => {
+
+}
+
+
+/* <attributes>
+<divisions>24</divisions>
+<key>
+  <fifths>-3</fifths>
+  <mode>minor</mode>
+</key>
+<time>
+  <beats>3</beats>
+  <beat-type>4</beat-type>
+</time>
+<clef>
+  <sign>G</sign>
+  <line>2</line>
+</clef>
+</attributes> */
+
+
+
+
+
+
+interface Note {
+    letterName: string;
+    octave: number;
+    type: string;
+    duration: number;
+    dot: Boolean;
+    syllable: string;
+}
+
 
 // letterName: string = 'C', octave: number = 4, type: string = 'quarter', duration: number = 4, alter: number = 0, accidental:string ='none', voice:number = 1, slurType: string = 'none', lyric: string = 'none'
 
@@ -68,9 +131,7 @@ export const makeNewXML = (syllableArray: Array<any>) => {
             // console.log(`${note.letterName}${note.octave}`)
             if (note !== undefined){
 
-                // const noteType : string = getNoteType(note.startPosition,note.endPosition)
-
-                const noteType : string = NoteTypes.QUARTER.name
+                const noteType : string = getNoteType(note.startPosition,note.endPosition)
 
 
 

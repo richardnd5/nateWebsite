@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import {VimeoView} from './VimeoView'
+// import {VimeoView} from './VimeoView'
+import Tone from 'tone'
+import * as MusicConstants from '../../backendJS/MusicConstants'
 
 const Container = styled.main`
 
@@ -90,13 +92,6 @@ const Form = styled.form`
 
 `
 
-const Wrapper = styled.div`
-width: '100%';
-
-`
-
-
-
 const storyLine = [
     'Hello',
     'I have had so many experiences',
@@ -132,7 +127,7 @@ export default class TextBasedAdventure extends Component {
 
     handleNext = (event) => {
         event.preventDefault();
-        let {storyPosition} = this.state
+        let { storyPosition } = this.state
         storyPosition++
 
         this.setState({
@@ -141,6 +136,38 @@ export default class TextBasedAdventure extends Component {
             this.setState({question: storyLine[storyPosition]})
         })
 
+
+        var reverb = new Tone.Reverb({
+            "wet": '1'
+        }).toMaster();
+        reverb.generate()
+
+        //pass in some initial values for the filter and filter envelope
+        var synth = new Tone.Synth({
+            "oscillator" : {
+                "type" : "triangle",
+                "modulationFrequency" : 0.8
+            },
+            "envelope" : {
+                "attack" : 0.001,
+                "decay" : 0.0,
+                "sustain" : 0.0,
+                "release" : 0.9,
+            }
+        }).connect(reverb);;
+        
+
+        let randomNoteName = MusicConstants.noteLetters[Math.floor(Math.random() * MusicConstants.noteLetters.length)]
+        randomNoteName+= "4"
+        //start the note "D3" one second from now
+        synth.triggerAttackRelease(randomNoteName, "0.51");
+
+
+
+
+
+
+
     }
 
     render() {
@@ -148,12 +175,10 @@ export default class TextBasedAdventure extends Component {
 
         return (
             <Container>
-
-
-                <VimeoView vimeoID='342190245'/>
+                {/* <VimeoView vimeoID='342190245'/> */}
 
                 <Question>{this.state.question}</Question>
-                <Button onClick={this.handleNext}>Next</Button>
+                <Button onTouchStart={this.handleNext}>Next</Button>
                 <Form onSubmit={this.handleSubmit} >
                     <TextArea onChange={this.handleTextAreaChange} value={this.state.answer} placeholder={this.state.answer} spellCheck="off" wrap="hard"/>
                 </Form>

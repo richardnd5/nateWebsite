@@ -5,10 +5,6 @@ import {NoteCell} from './NoteCell'
 const rows = 8
 
 const Overflow = styled.section`
-    /* height: 70vh; */
-    /* width: 100vw; */
-    /* overflow: auto; */
-    /* background-color: #eef; */
     margin-top: 40px;
     margin-bottom: 40px;
 `
