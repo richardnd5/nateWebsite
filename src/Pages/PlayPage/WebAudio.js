@@ -63,10 +63,61 @@ const sampler = new Tone.Sampler({
         source.start();
     }
 
+    export function playMultipleLines(noteStringArray, key, mode, tempo, callback, harmonyChecked){
+        
+        for (let i = 0; i < noteStringArray.length; i++) {
+            const noteString = noteStringArray[i]
+            loadSequencer(noteString, key, mode, tempo, callback, harmonyChecked)            
+        }
+
+
+
+        // You need to create a buffer source and connect the context to it in order to hear the audio on mobile. That's the 3 lines of code below.
+        var source = context.createBufferSource();
+        source.connect(context.destination);
+        source.start();
+    }
+
     export function stopSequencer(){
         clock.stop()
         sampler.releaseAll()
     }
+
+        // // HELPER FUNCTIONS
+        // function loadSequencerMultiple(noteStringArray, key, mode, tempo, callback, harmonyChecked) {
+
+        //     for (let i = 0; i < noteStringArray.length; i++) {
+        //         const element = noteStringArray[i];
+
+        //         let array = createNoteObjectArray(element, key, mode)
+        //         // clock.start()
+                
+        //         for (let i = 0; i < array.length; i++) {
+        //             const noteObject = array[i];
+        //             const schedulingPadding = tempo/scheduleDivisor
+        
+        //             placeNoteInFuture(noteObject, tempo)
+        
+        //             if (harmonyChecked){
+        //                 placeHarmonyInFuture(noteObject, tempo, key, mode, -9)
+        //                 placeHarmonyInFuture(noteObject, tempo, key, mode, -5)
+        //             }
+        
+        
+        //             if (i === array.length - 1) {
+        //                 const currentTime = context.currentTime
+        //                 let noteEndTime = ((noteObject.endPosition) / 4 + schedulingPadding) * (60 / tempo)
+        //                 clock.callbackAtTime(() => {
+        //                     callback()
+        //                 }, (noteEndTime) + currentTime)
+        //             }
+        //         };
+                
+        //     }
+
+
+        //     clock.start()
+        // }
 
     // HELPER FUNCTIONS
     function loadSequencer(noteString, key, mode, tempo, callback, harmonyChecked) {

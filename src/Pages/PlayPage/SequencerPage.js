@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Modes, Key } from '../../backendJS/MusicConstants'
-import { playAllNotes, stopSequencer } from './WebAudio' //has to be imported before sampler
+import { playAllNotes, playMultipleLines, stopSequencer, mult } from './WebAudio' //has to be imported before sampler
 // import {SheetMusicPage} from './SheetMusicPage'
 import { generateXMLFromNoteObject } from '../../backendJS/MusicXMLTypes'
 import {makingMelodyAgain} from './MelodyGenerator'
@@ -83,7 +83,8 @@ export default class SequencerPage extends Component {
 
     state = {
         toggleOn: true,
-        noteString: '5;;;5;;34.32;;..4.4.3.2.32.1;;..',
+        melodyNoteString: '5;;;5;;34.32;;..4.4.3.2.32.1;;..',
+        counterMelodyNoteString: '1...1...1...1...1...1...1...1...',
         key: Key["C"],
         keyString: "C",
         mode: Modes.ionian,
@@ -101,15 +102,18 @@ export default class SequencerPage extends Component {
 
     handlePlayToggle = () => {
 
-        let {noteString, key, mode, tempo, toggleOn, harmonyChecked} = this.state
+        let {melodyNoteString, counterMelodyNoteString, key, mode, tempo, toggleOn, harmonyChecked} = this.state
 
         this.setState({ toggleOn: !this.state.toggleOn }, () => {
-            toggleOn ? playAllNotes(noteString, key, mode, tempo, this.turnOffButton, harmonyChecked) : stopSequencer()
+
+            toggleOn ? playMultipleLines([counterMelodyNoteString,melodyNoteString], key, mode, tempo, this.turnOffButton, harmonyChecked) : stopSequencer()
+
+            // toggleOn ? playAllNotes(melodyNoteString, key, mode, tempo, this.turnOffButton, harmonyChecked) : stopSequencer()
         })
     }
 
     handleTextAreaChange = (event) => {
-        this.setState({ noteString: event.target.value });
+        this.setState({ melodyNoteString: event.target.value });
 
     }
 
@@ -145,8 +149,8 @@ export default class SequencerPage extends Component {
 
     createNoteObjectsFromString = () =>{ 
         
-        const {noteString,key,mode} = this.state
-        const newXML = generateXMLFromNoteObject(noteString,key,mode)
+        const {melodyNoteString,key,mode} = this.state
+        const newXML = generateXMLFromNoteObject(melodyNoteString,key,mode)
 
         this.setState({
             xml: newXML
@@ -160,12 +164,12 @@ export default class SequencerPage extends Component {
 
 
         this.setState({
-            noteString: string,
+            melodyNoteString: string,
 
 
         }, () => {
-            let {noteString} = this.state
-            const objectArray = createNoteObjectArray(noteString, key, mode)
+            let {melodyNoteString} = this.state
+            const objectArray = createNoteObjectArray(melodyNoteString, key, mode)
             this.setState({
                 noteObjects: objectArray
             })
@@ -185,8 +189,13 @@ export default class SequencerPage extends Component {
                 <Title>Simple Melody Maker</Title>
                 <form onSubmit={this.handleSubmit} >
                     <label>Type in a Melody</label><br />
-                    <TextArea onChange={this.handleTextAreaChange} value={this.state.noteString} placeholder={this.state.noteString} spellCheck="off" wrap="hard"/>
+                    <TextArea onChange={this.handleTextAreaChange} value={this.state.melodyNoteString} placeholder={this.state.melodyNoteString} spellCheck="off" wrap="hard"/>
                 </form>
+
+                {/* <form onSubmit={this.handleSubmit} >
+                    <label>Type in a Counter Melody</label><br />
+                    <TextArea onChange={this.handleTextAreaChange} value={this.state.melodyNoteString} placeholder={this.state.melodyNoteString} spellCheck="off" wrap="hard"/>
+                </form> */}
 
 
                 <label>(Scroll Down To See Key)</label>
