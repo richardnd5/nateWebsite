@@ -2,7 +2,7 @@ import WAAClock from 'waaclock'
 import webAudioTouchUnlock from 'web-audio-touch-unlock'
 import Tone from 'tone'
 
-import { pitches, allPossibleTriadicHarmonyNotes } from '../../backendJS/MusicConstants'
+import { pitchesWithOctaves, allPossibleTriadicHarmonyNotes } from '../../backendJS/MusicConstants'
 import { createNoteObjectArray} from '../../backendJS/StringToNoteObjectTypes'
 
 if (!window.AudioContext) alert('you browser doesnt support Web Audio API')
@@ -57,6 +57,8 @@ const sampler = new Tone.Sampler({
                 
         loadSequencer(noteString, key, mode, tempo, callback, harmonyChecked)
 
+
+
         // You need to create a buffer source and connect the context to it in order to hear the audio on mobile. That's the 3 lines of code below.
         var source = context.createBufferSource();
         source.connect(context.destination);
@@ -70,54 +72,54 @@ const sampler = new Tone.Sampler({
             loadSequencer(noteString, key, mode, tempo, callback, harmonyChecked)            
         }
 
-
-
         // You need to create a buffer source and connect the context to it in order to hear the audio on mobile. That's the 3 lines of code below.
         var source = context.createBufferSource();
         source.connect(context.destination);
         source.start();
     }
 
+    // export function playCChord(noteString, key, mode, tempo, callback, harmonyChecked){
+    //     loadSequencerChords(noteString, key, mode, tempo, callback, harmonyChecked)
+    //     // You need to create a buffer source and connect the context to it in order to hear the audio on mobile. That's the 3 lines of code below.
+    //     var source = context.createBufferSource();
+    //     source.connect(context.destination);
+    //     source.start();
+    // }
+
     export function stopSequencer(){
         clock.stop()
         sampler.releaseAll()
     }
 
-        // // HELPER FUNCTIONS
-        // function loadSequencerMultiple(noteStringArray, key, mode, tempo, callback, harmonyChecked) {
+        // HELPER FUNCTIONS
+        function loadSequencerChords(noteString, key, mode, tempo, callback, harmonyChecked) {
 
-        //     for (let i = 0; i < noteStringArray.length; i++) {
-        //         const element = noteStringArray[i];
-
-        //         let array = createNoteObjectArray(element, key, mode)
-        //         // clock.start()
-                
-        //         for (let i = 0; i < array.length; i++) {
-        //             const noteObject = array[i];
-        //             const schedulingPadding = tempo/scheduleDivisor
-        
-        //             placeNoteInFuture(noteObject, tempo)
-        
-        //             if (harmonyChecked){
-        //                 placeHarmonyInFuture(noteObject, tempo, key, mode, -9)
-        //                 placeHarmonyInFuture(noteObject, tempo, key, mode, -5)
-        //             }
-        
-        
-        //             if (i === array.length - 1) {
-        //                 const currentTime = context.currentTime
-        //                 let noteEndTime = ((noteObject.endPosition) / 4 + schedulingPadding) * (60 / tempo)
-        //                 clock.callbackAtTime(() => {
-        //                     callback()
-        //                 }, (noteEndTime) + currentTime)
-        //             }
-        //         };
-                
-        //     }
-
-
-        //     clock.start()
-        // }
+            let array = createNoteObjectArray(noteString, key, mode)
+            clock.start()
+            
+            for (let i = 0; i < array.length; i++) {
+                const noteObject = array[i];
+                const schedulingPadding = tempo/scheduleDivisor
+    
+                placeNoteInFuture(noteObject, tempo)
+    
+                if (harmonyChecked){
+                    placeHarmonyInFuture(noteObject, tempo, key, mode, -9)
+                    placeHarmonyInFuture(noteObject, tempo, key, mode, -5)
+                }
+    
+    
+                if (i === array.length - 1) {
+                    const currentTime = context.currentTime
+                    let noteEndTime = ((noteObject.endPosition) / 4 + schedulingPadding) * (60 / tempo)
+                    clock.callbackAtTime(() => {
+                        callback()
+                    }, (noteEndTime) + currentTime)
+                }
+            };
+            clock.start()
+        }
+    
 
     // HELPER FUNCTIONS
     function loadSequencer(noteString, key, mode, tempo, callback, harmonyChecked) {
@@ -132,6 +134,7 @@ const sampler = new Tone.Sampler({
             placeNoteInFuture(noteObject, tempo)
 
             if (harmonyChecked){
+
                 placeHarmonyInFuture(noteObject, tempo, key, mode, -9)
                 placeHarmonyInFuture(noteObject, tempo, key, mode, -5)
             }
@@ -150,7 +153,7 @@ const sampler = new Tone.Sampler({
 
     function placeNoteInFuture(noteObject, tempo) {
 
-        const {note, startPosition, endPosition} = noteObject
+        const {noteNumber, startPosition, endPosition} = noteObject
 
         const schedulingPadding = tempo/scheduleDivisor
 
@@ -159,19 +162,19 @@ const sampler = new Tone.Sampler({
         let noteEndTime = ((endPosition) / 4 + schedulingPadding) * (60 / tempo)
 
         clock.callbackAtTime(() => {
-
-            sampler.triggerAttack(`${pitches[note]}`);
+            // console.log(noteNumber)
+            sampler.triggerAttack(`${pitchesWithOctaves[noteNumber]}`);
         }, (noteStartTime) + currentTime)
 
         clock.callbackAtTime(() => {
-            sampler.triggerRelease(`${pitches[note]}`);
+            sampler.triggerRelease(`${pitchesWithOctaves[noteNumber]}`);
             
         }, (noteEndTime) + currentTime)
     }
 
     function placeHarmonyInFuture(noteObject, tempo, key, mode, semitones){
-        const {note, startPosition, endPosition} = noteObject
-        let noteToInsert = note+semitones
+        const {noteNumber, startPosition, endPosition} = noteObject
+        let noteToInsert = noteNumber+semitones
         const schedulingPadding = tempo/scheduleDivisor
     
         // const allNotes = allPossibleDiatonicNotes(key,mode)
@@ -186,11 +189,11 @@ const sampler = new Tone.Sampler({
         let noteEndTime = ((endPosition) / 4 + schedulingPadding) * (60 / tempo)
 
         clock.callbackAtTime(() => {
-            sampler.triggerAttack(`${pitches[noteToInsert]}`)
+            sampler.triggerAttack(`${pitchesWithOctaves[noteToInsert]}`)
         }, (noteStartTime) + currentTime)
 
         clock.callbackAtTime(() => {
-            sampler.triggerRelease(`${pitches[noteToInsert]}`)
+            sampler.triggerRelease(`${pitchesWithOctaves[noteToInsert]}`)
             
         }, (noteEndTime) + currentTime)
     }

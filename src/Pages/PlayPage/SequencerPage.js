@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Modes, Key } from '../../backendJS/MusicConstants'
-import { playAllNotes, playMultipleLines, stopSequencer, mult } from './WebAudio' //has to be imported before sampler
+import { playAllNotes, playMultipleLines, stopSequencer } from './WebAudio' //has to be imported before sampler
 // import {SheetMusicPage} from './SheetMusicPage'
 import { generateXMLFromNoteObject } from '../../backendJS/MusicXMLTypes'
 import {makingMelodyAgain} from './MelodyGenerator'
@@ -106,14 +106,18 @@ export default class SequencerPage extends Component {
 
         this.setState({ toggleOn: !this.state.toggleOn }, () => {
 
-            toggleOn ? playMultipleLines([counterMelodyNoteString,melodyNoteString], key, mode, tempo, this.turnOffButton, harmonyChecked) : stopSequencer()
+            // toggleOn ? playMultipleLines([counterMelodyNoteString,melodyNoteString], key, mode, tempo, this.turnOffButton, harmonyChecked) : stopSequencer()
 
-            // toggleOn ? playAllNotes(melodyNoteString, key, mode, tempo, this.turnOffButton, harmonyChecked) : stopSequencer()
+            toggleOn ? playAllNotes(melodyNoteString, key, mode, tempo, this.turnOffButton, harmonyChecked) : stopSequencer()
         })
     }
 
-    handleTextAreaChange = (event) => {
+    handleMelodyTextChange = (event) => {
         this.setState({ melodyNoteString: event.target.value });
+
+    }
+    handleAccompanimentTextChange = (event) => {
+        this.setState({ counterMelodyNoteString: event.target.value });
 
     }
 
@@ -176,6 +180,9 @@ export default class SequencerPage extends Component {
         })
     }
 
+    handleButtonPress = () => {
+    }
+
 
     render() {
 
@@ -186,16 +193,18 @@ export default class SequencerPage extends Component {
 
             <Container>
 
+                <button onClick={this.handleButtonPress}>Play Chord</button>
+
                 <Title>Simple Melody Maker</Title>
                 <form onSubmit={this.handleSubmit} >
                     <label>Type in a Melody</label><br />
-                    <TextArea onChange={this.handleTextAreaChange} value={this.state.melodyNoteString} placeholder={this.state.melodyNoteString} spellCheck="off" wrap="hard"/>
+                    <TextArea onChange={this.handleMelodyTextChange} value={this.state.melodyNoteString} placeholder={this.state.melodyNoteString} spellCheck="off" wrap="hard"/>
                 </form>
 
-                {/* <form onSubmit={this.handleSubmit} >
+                <form onSubmit={this.handleSubmit} >
                     <label>Type in a Counter Melody</label><br />
-                    <TextArea onChange={this.handleTextAreaChange} value={this.state.melodyNoteString} placeholder={this.state.melodyNoteString} spellCheck="off" wrap="hard"/>
-                </form> */}
+                    <TextArea onChange={this.handleAccompanimentTextChange} value={this.state.counterMelodyNoteString} placeholder={this.state.counterMelodyNoteString} spellCheck="off" wrap="hard"/>
+                </form>
 
 
                 <label>(Scroll Down To See Key)</label>

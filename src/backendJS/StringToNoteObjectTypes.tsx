@@ -1,8 +1,7 @@
-import { pitches } from './MusicConstants'
+import { pitchesWithOctaves } from './MusicConstants'
 
 interface NoteObject {
-    name: string,
-    note: number,
+    noteNumber: number,
     letterName: string,
     octave: number,
     startPosition: number,
@@ -16,14 +15,15 @@ interface Key {
 
 const acceptableCharacters: string[] = [":", ";", "'", ",", ".", "b", "#", "-", "||", "=", "(", ")"]
 
-export function createNoteObjectArray(theString:string, key:number, mode: number[]) {
-    let cleanedString : string = removeWhiteSpaceFromString(theString)
-    let initialArray : string[] = createInitialArray(cleanedString)
+export function createNoteObjectArray(melodyString:string, key:number, mode: number[]) {
+    let stringNoWhiteSpace : string = removeWhiteSpaceFromString(melodyString)
+    let initialArray : string[] = createInitialArray(stringNoWhiteSpace)
     let midiNoteArray : string[] = convertArrayToMIDINumbers(initialArray, key, mode)
-    return createNoteObjectArrayFromMIDIArray(midiNoteArray)
+    let noteObjectArray : NoteObject[] = createNoteObjectArrayFromMIDIArray(midiNoteArray)
+
+    return noteObjectArray
 }
 
-// Cleans up string of spaces and carriage returns. 
 function removeWhiteSpaceFromString(string: string){
     return string
         .replace(/\s/g, '')
@@ -37,7 +37,9 @@ function createInitialArray(string: string){
         .split("")
         array.push("||") // put a "double bar" at the end.
 
-        // if the first character is an ; remove it
+        /* if the first character is a note lengthen 
+        or octave displacement symbol remove it 
+        (a character that needs a note before it to be of use*/
         while (array[0] === ";" || array[0] === "'" || array[0] === ","){
             array.splice(0,1)
         }
@@ -102,49 +104,63 @@ function convertArrayToMIDINumbers(array: string[], key:number, mode: number[]){
             }
         }
     }
+
     return convertedArray
 }
 
 // Creates NoteObject array that the sequencer needs to schedule sampler to play in rhythm.
 function createNoteObjectArrayFromMIDIArray(array: string[]){
+
     let noteObjects : NoteObject[] = []
-    // let sustainCounter
 
     for (let i = 0; i < array.length; i++) {
 
         // If it is a number, add a note object to the array.
         if (isInteger(array[i])) {
-
-            const letterNameWithOctave : string = pitches[parseInt(array[i],10)]
-            const letterName : string = letterNameWithOctave.slice(0, -1);
-            const octave : number = parseInt(letterNameWithOctave.slice(letterNameWithOctave.length-1, letterNameWithOctave.length))
-
-            noteObjects.push({
-                name: array[i],
-                note: parseInt(array[i], 10),
-                letterName: letterName,
-                octave: octave,
-                startPosition: i,
-                endPosition: i + 1
-            })
+            const noteNumber : number = parseInt(array[i], 10)
+            const noteObject : NoteObject = makeNoteObject(noteNumber, i)
+            noteObjects.push(noteObject)
         }
 
-        // If the next it is a sustain character, count ahead and increment the sustain counter, then convert all sustain counters in the character array to a '.' (moment in sequence with no sound).
+        /* If the next it is a sustain character, 
+        count ahead and increment the sustain counter, 
+        then convert all sustain counters in the character array to a '.' 
+        (moment in sequence with no sound). */
+
         if (array[i] === ";" || array[i] === ":") {
-            let temp;
+            let temp : number;
             for (temp = i; temp < array.length; temp++) {
                 if (array[temp] === ":" || array[temp] === ";") {
-                    // sustainCounter += 1
                     array[temp] = "."
                 } else {
                     noteObjects[noteObjects.length - 1].endPosition = temp
-                    // sustainCounter = 0
                     break
                 }
             }
         }
     }
     return noteObjects
+}
+
+function makeNoteObject(midiNumber: number, arraySlot: number){
+
+    const letterNameWithOctave : string = pitchesWithOctaves[midiNumber]
+    const letterName : string = letterNameWithOctave.slice(0, -1);
+    const octave : number = parseInt(letterNameWithOctave.slice(letterNameWithOctave.length-1, letterNameWithOctave.length))
+    const noteNumber : number = midiNumber
+    const startPosition : number = arraySlot
+    const endPosition : number = arraySlot+1
+
+    const noteObject : NoteObject = {
+        noteNumber: noteNumber,
+        letterName: letterName,
+        octave: octave,
+        startPosition: startPosition,
+        endPosition: endPosition
+    }
+
+    return noteObject
+
 }
 
 const isInteger = (char: string) => {

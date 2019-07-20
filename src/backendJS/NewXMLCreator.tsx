@@ -1,6 +1,6 @@
 import {NoteTypes, accidental} from './MusicConstants'
 import { createNoteObjectArray} from './StringToNoteObjectTypes'
-import { pitches, allPossibleTriadicHarmonyNotes, KeySignaturesFromMidiNote, slurType, Lyric, SyllabicType } from './MusicConstants'
+import { pitchesWithOctaves, allPossibleTriadicHarmonyNotes, KeySignaturesFromMidiNote, slurType, Lyric, SyllabicType } from './MusicConstants'
 
 
 

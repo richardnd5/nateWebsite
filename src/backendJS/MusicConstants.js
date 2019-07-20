@@ -1,10 +1,10 @@
 export const noteLetters = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
 
-export const pitches = []
+export const pitchesWithOctaves = []
 
 for (let j = 0; j < 9; j++) {
     for (let i = 0; i < noteLetters.length; i++) {
-        pitches.push(`${noteLetters[i]}${j - 1}`)
+        pitchesWithOctaves.push(`${noteLetters[i]}${j - 1}`)
     }
 }
 

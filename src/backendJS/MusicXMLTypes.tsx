@@ -1,6 +1,6 @@
 import {NoteTypes, KeySignatures, accidental} from './MusicConstants'
 import { createNoteObjectArray} from './StringToNoteObjectTypes'
-import { pitches, allPossibleTriadicHarmonyNotes, KeySignaturesFromMidiNote, slurType, Lyric, SyllabicType } from './MusicConstants'
+import { pitchesWithOctaves, allPossibleTriadicHarmonyNotes, KeySignaturesFromMidiNote, slurType, Lyric, SyllabicType } from './MusicConstants'
 // import { Note } from 'opensheetmusicdisplay/build/dist/src';
 
 interface Note {
